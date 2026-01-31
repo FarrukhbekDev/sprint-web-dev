@@ -160,8 +160,22 @@ const Lesson = () => {
             </div>
           )}
 
+          {/* VS Code Steps */}
+          {lesson.vsCodeSteps && (
+            <div className="mb-10 p-6 rounded-2xl bg-blue-500/10 border border-blue-500/30">
+              <h3 className="font-display font-bold text-lg mb-4 flex items-center gap-2">
+                <span className="text-blue-500">💻</span> VS Code da qanday qilish:
+              </h3>
+              <ol className="list-decimal list-inside space-y-2 text-foreground/80">
+                {lesson.vsCodeSteps.map((step, index) => (
+                  <li key={index}>{step}</li>
+                ))}
+              </ol>
+            </div>
+          )}
+
           {/* Assignment */}
-          <div className="mb-10 p-6 rounded-2xl bg-accent/10 border border-accent/30">
+          <div className="mb-6 p-6 rounded-2xl bg-accent/10 border border-accent/30">
             <div className="flex items-start gap-4">
               <div className="w-10 h-10 rounded-xl accent-gradient flex items-center justify-center flex-shrink-0">
                 <Lightbulb className="w-5 h-5 text-accent-foreground" />
@@ -171,12 +185,28 @@ const Lesson = () => {
                 <p className="text-foreground/80 mb-4">{lesson.assignment.description}</p>
                 {lesson.assignment.hint && (
                   <div className="text-sm text-muted-foreground bg-background/50 rounded-lg p-3">
-                    <span className="font-medium">Maslahat:</span> {lesson.assignment.hint}
+                    <span className="font-medium">💡 Maslahat:</span> {lesson.assignment.hint}
                   </div>
                 )}
               </div>
             </div>
           </div>
+
+          {/* Solution Code */}
+          {lesson.assignment.solution && (
+            <div className="mb-10">
+              <details className="group">
+                <summary className="flex items-center gap-2 cursor-pointer font-display font-semibold text-lg mb-3 text-green-600 hover:text-green-500">
+                  <span>✅ Yechim (bosib ko'ring)</span>
+                </summary>
+                <div className="code-block bg-green-500/5 border border-green-500/30 overflow-x-auto mt-2">
+                  <pre className="text-sm leading-relaxed">
+                    <code>{lesson.assignment.solution}</code>
+                  </pre>
+                </div>
+              </details>
+            </div>
+          )}
 
           {/* Navigation */}
           <div className="flex items-center justify-between pt-8 border-t border-border">
