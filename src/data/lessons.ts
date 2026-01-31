@@ -9,7 +9,9 @@ export interface Lesson {
     title: string;
     description: string;
     hint?: string;
+    solution?: string;
   };
+  vsCodeSteps?: string[];
 }
 
 export const lessons: Lesson[] = [
@@ -18,46 +20,53 @@ export const lessons: Lesson[] = [
     title: "HTML nima va u qanday ishlaydi?",
     description: "Web sahifalarning asosi - HTML tili bilan tanishish",
     duration: "25 daqiqa",
-    content: `HTML (HyperText Markup Language) - bu veb-sahifalar yaratish uchun ishlatiladigan standart til. U veb-brauzerga sahifa qanday ko'rinishda bo'lishi kerakligini aytadi. HTML 1991 yilda Tim Berners-Li tomonidan yaratilgan va hozirgi kunda HTML5 versiyasi ishlatiladi.
+    content: `HTML (HyperText Markup Language) - bu veb-sahifalar yaratish uchun ishlatiladigan standart til. Qisqacha aytganda, HTML brauzerlarga "bu sarlavha", "bu rasm", "bu havola" deb aytuvchi til.
 
-## HTML nima qiladi?
+## Oddiy tilda tushuntirish
 
-HTML veb-sahifaning skeletini yaratadi. U quyidagi vazifalarni bajaradi:
+Tasavvur qiling: siz uy quryapsiz. HTML - bu uyning g'ishtlari va skelet-konstruksiyasi. U uyga shakl beradi, lekin hali bezak yo'q (CSS) va elektr yo'q (JavaScript).
 
-- Matn, rasm va boshqa kontentlarni joylashtiradi
-- Sahifa strukturasini belgilaydi (sarlavhalar, paragraflar, ro'yxatlar)
-- Brauzer uchun ko'rsatmalar beradi
-- Boshqa sahifalarga havolalar yaratadi
-- Forma va interaktiv elementlar qo'shadi
-
-## HTML tegi nima?
-
-Teglar - bu maxsus belgilar bo'lib, ular < va > belgilari orasida yoziladi. Masalan: <p>, <h1>, <div>. Teglar brauzerga kontentni qanday ko'rsatish kerakligini aytadi.
-
-Har bir teg ochiladi va yopiladi:
-- Ochilish tegi: <tagname>
-- Yopilish tegi: </tagname>
-- Ba'zi teglar o'z-o'zini yopadi: <img />, <br />, <hr />
+Brauzer (Chrome, Firefox) HTML faylni o'qiydi va uni chiroyli sahifaga aylantiradi.
 
 ## HTML hujjat strukturasi
 
-Har bir HTML hujjat quyidagi asosiy qismlardan iborat:
+Har bir HTML sahifa quyidagi qismlardan iborat:
 
-- <!DOCTYPE html> - brauzerga bu HTML5 hujjat ekanini bildiradi
-- <html> - butun hujjatni o'rab turadi
-- <head> - meta ma'lumotlar (title, CSS, JavaScript havolalar)
-- <body> - sahifada ko'rinadigan barcha kontent
+- <!DOCTYPE html> - "Bu HTML5 hujjati" degan bildirish
+- <html> - hamma narsa shu ichida
+- <head> - sahifa haqida ma'lumot (brauzer ko'rsatmaydi)
+- <body> - foydalanuvchi ko'radigan hamma narsa
 
-## Nima uchun HTML muhim?
+## Teglar qanday ishlaydi?
 
-HTML - bu veb-dasturlashning asosi. JavaScript va CSS bilan birgalikda u "veb-ning uch ustuni" deb ataladi. HTML strukturani, CSS dizaynni, JavaScript esa interaktivlikni ta'minlaydi.
+Teg - bu < va > ichidagi maxsus so'z. Masalan:
+- <p> - paragraf boshlaydi
+- </p> - paragraf tugaydi
+
+Misol: <p>Salom dunyo!</p>
+
+Natija: brauzer "Salom dunyo!" degan matnni ko'rsatadi.
+
+## Eng ko'p ishlatiladigan teglar
+
+Sarlavhalar:
+- <h1> - eng katta sarlavha (sahifada 1 ta)
+- <h2> - bo'lim sarlavhasi
+- <h3> - kichik bo'lim
+
+Matn:
+- <p> - paragraf (oddiy matn)
+- <br> - yangi qatorga o'tish
+- <strong> - qalin matn
+- <em> - kursiv matn
 
 ## Brauzer HTML ni qanday o'qiydi?
 
-1. Brauzer HTML faylni yuklab oladi
-2. HTML kodini tahlil qiladi (parsing)
-3. DOM (Document Object Model) daraxtini yaratadi
-4. Sahifani ekranga chizadi (rendering)`,
+1. Faylni yuklab oladi
+2. Yuqoridan pastga o'qiydi
+3. Har bir tegni tushunib, chizadi
+
+Xuddi kitob o'qigandek - birinchi sahifadan oxirigacha.`,
     codeExample: `<!DOCTYPE html>
 <html lang="uz">
 <head>
@@ -66,20 +75,48 @@ HTML - bu veb-dasturlashning asosi. JavaScript va CSS bilan birgalikda u "veb-ni
     <title>Mening birinchi sahifam</title>
 </head>
 <body>
-    <h1>Salom Dunyo!</h1>
-    <p>Bu mening birinchi veb-sahifam.</p>
-    <p>Men bugun HTML o'rganishni boshladim!</p>
-    
     <!-- Bu izoh - brauzer buni ko'rsatmaydi -->
     
+    <h1>Salom Dunyo!</h1>
+    <p>Bu mening birinchi veb-sahifam.</p>
+    <p>Men bugun <strong>HTML</strong> o'rganishni boshladim!</p>
+    
     <h2>Nega HTML o'rganish kerak?</h2>
-    <p>HTML barcha veb-sahifalarning asosi hisoblanadi.</p>
+    <p>HTML barcha veb-sahifalarning <em>asosi</em> hisoblanadi.</p>
+    
+    <h2>Keyingi qadamlar</h2>
+    <p>HTML dan keyin CSS va JavaScript o'rganaman.</p>
 </body>
 </html>`,
+    vsCodeSteps: [
+      "VS Code ni oching",
+      "File → New File bosing",
+      "Faylni 'index.html' deb saqlang (Ctrl+S)",
+      "Fayl ichida '!' yozing va Enter bosing - tayyor shablon chiqadi",
+      "<body> ichiga o'z kodingizni yozing",
+      "Faylni saqlang (Ctrl+S)",
+      "Faylni brauzerda oching (fayl ustiga 2 marta bosing)"
+    ],
     assignment: {
       title: "Birinchi HTML sahifangizni yarating",
-      description: "To'liq HTML sahifa yarating. Unda: 1) h1 tegi ichida o'z ismingizni yozing, 2) p tegi ichida o'zingiz haqida 2-3 gap yozing, 3) h2 tegi ichida 'Mening maqsadlarim' deb yozing, 4) Yana bir p tegi ichida dasturlash bo'yicha maqsadlaringizni yozing.",
-      hint: "<!DOCTYPE html> bilan boshlang. <html>, <head>, <title>, <body> teglarini to'g'ri joylashtiring. Izohlar uchun <!-- izoh --> sintaksisidan foydalaning."
+      description: "To'liq HTML sahifa yarating. Unda: 1) h1 tegi ichida o'z ismingizni yozing, 2) p tegi ichida o'zingiz haqida 2-3 gap yozing, 3) h2 tegi ichida 'Mening maqsadlarim' deb yozing, 4) Yana bir p tegi ichida dasturlash bo'yicha maqsadlaringizni yozing, 5) strong va em teglarini ham ishlating.",
+      hint: "<!DOCTYPE html> bilan boshlang. VS Code da '!' yozib Enter bosing - tayyor shablon chiqadi.",
+      solution: `<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mening sahifam</title>
+</head>
+<body>
+    <h1>Jasur Karimov</h1>
+    <p>Men <strong>Toshkent</strong>da yashayman. Yoshim 22 da. <em>Dasturlashni</em> juda yaxshi ko'raman!</p>
+    
+    <h2>Mening maqsadlarim</h2>
+    <p>Men professional <strong>frontend dasturchi</strong> bo'lmoqchiman. 
+    2024 yil oxirigacha <em>React</em> va <em>TypeScript</em> ni mukammal o'rganmoqchiman.</p>
+</body>
+</html>`
     }
   },
   {
@@ -87,234 +124,419 @@ HTML - bu veb-dasturlashning asosi. JavaScript va CSS bilan birgalikda u "veb-ni
     title: "HTML teglar va atributlar",
     description: "Asosiy HTML teglari va ularning atributlari bilan ishlash",
     duration: "30 daqiqa",
-    content: `## Asosiy HTML teglar
+    content: `## Atribut nima?
 
-HTML da 100 dan ortiq teglar mavjud, lekin kundalik ishda 20-30 tasini ko'p ishlatamiz. Keling, eng muhimlarini o'rganamiz.
-
-### Sarlavha teglari (Headings)
-
-h1 dan h6 gacha - sarlavhalar uchun ishlatiladi. h1 eng katta va muhim, h6 eng kichik.
-
-- <h1> - Sahifaning asosiy sarlavhasi (har sahifada faqat 1 ta bo'lishi kerak)
-- <h2> - Bo'lim sarlavhalari
-- <h3> - <h6> - Kichik bo'limlar
-
-SEO uchun muhim: Sarlavhalarni tartib bilan ishlating (h1 -> h2 -> h3).
-
-### Matn teglari
-
-- <p> - Paragraf (oddiy matn uchun)
-- <span> - Inline matn qismi (stillashtirish uchun)
-- <strong> - Qalin va muhim matn
-- <em> - Kursiv va ta'kidlangan matn
-- <br> - Yangi qatorga o'tish
-- <hr> - Gorizontal chiziq
-
-### Havola (Link) tegi
-
-<a> tegi - boshqa sahifalarga havola qilish uchun ishlatiladi. Bu veb-ning eng muhim xususiyatlaridan biri.
-
-### Rasm tegi
-
-<img> tegi - rasmlarni ko'rsatish uchun. Bu o'z-o'zini yopadigan teg.
-
-## Atributlar nima?
-
-Atributlar tegga qo'shimcha ma'lumot beradi. Ular ochilish tegi ichida yoziladi va qiymat oladi.
+Atribut - tegga qo'shimcha ma'lumot beradi. Masalan:
+- <a href="..."> - href atributi havolaning manzilini ko'rsatadi
+- <img src="..."> - src atributi rasm joylashgan joyni ko'rsatadi
 
 Sintaksis: <teg atribut="qiymat">
 
-### Eng ko'p ishlatiladigan atributlar:
+## Eng muhim atributlar
 
-- id - elementga noyob identifikator beradi (sahifada takrorlanmasligi kerak)
-- class - elementlarni guruhlash uchun (CSS da ishlatiladi)
-- style - inline CSS stillari
-- title - sichqoncha ustiga kelganda ko'rinadigan maslahat
-- src - rasm yoki video manba yo'li
-- href - havola manzili
-- alt - rasm yuklanmaganda ko'rinadigan matn
-- width/height - o'lchamlar
+### href - havolalar uchun
+<a href="https://google.com">Google</a>
+Bu "Google" so'zini bosganda google.com ga olib boradi.
 
-## Boolean atributlar
+### src - rasmlar uchun
+<img src="rasm.jpg">
+Bu rasmni ko'rsatadi.
 
-Ba'zi atributlar qiymat olmaydi, faqat mavjudligi muhim:
-- disabled - elementni o'chiradi
-- required - to'ldirish majburiy
-- readonly - faqat o'qish uchun`,
-    codeExample: `<!-- Sarlavhalar -->
-<h1>Asosiy sarlavha - sahifada 1 ta</h1>
-<h2>Ikkinchi darajali sarlavha</h2>
-<h3>Uchinchi darajali sarlavha</h3>
+### alt - rasm tavsifi
+<img src="rasm.jpg" alt="Chiroyli tog'">
+Rasm yuklanmasa, "Chiroyli tog'" matni ko'rinadi. SEO uchun ham muhim!
 
-<!-- Matn elementlari -->
-<p>Bu oddiy paragraf matni. <strong>Bu muhim matn</strong> va <em>bu ta'kidlangan</em>.</p>
+### id va class
+- id - sahifada yagona (bitta element uchun)
+- class - bir nechta elementda ishlatilishi mumkin
 
-<p>Birinchi qator<br>Ikkinchi qator</p>
+<div id="header">Bu yagona</div>
+<p class="text">Bu takrorlanishi mumkin</p>
+<p class="text">Yana shu class</p>
 
-<hr>
+## Havola turlari
 
-<!-- Havola - yangi tabda ochiladi -->
-<a href="https://google.com" target="_blank" title="Google saytiga o'tish">
-    Google saytiga o'tish
-</a>
+### Tashqi havola (boshqa saytga)
+<a href="https://google.com" target="_blank">Google</a>
+target="_blank" - yangi tabda ochadi
 
-<!-- Rasm -->
-<img 
-    src="rasm.jpg" 
-    alt="Rasmning tavsifi - SEO uchun muhim" 
-    width="300"
-    height="200"
->
+### Ichki havola (shu saytda)
+<a href="about.html">Biz haqimizda</a>
 
-<!-- ID va Class ishlatish -->
-<div id="header" class="container main-header">
-    <h1 class="title">Sayt nomi</h1>
-</div>
+### Telefon va email
+<a href="tel:+998901234567">Qo'ng'iroq qilish</a>
+<a href="mailto:email@example.com">Email yuborish</a>
 
-<!-- Inline style (yaxshi emas, lekin ishlaydi) -->
-<p style="color: blue; font-size: 18px;">Ko'k rangdagi matn</p>`,
+## Rasm tegi
+
+<img src="rasm.jpg" alt="Tavsif" width="300" height="200">
+
+- src - rasm manzili (majburiy!)
+- alt - tavsif (majburiy!)
+- width/height - o'lcham (ixtiyoriy)
+
+## Blok va inline elementlar
+
+Blok elementlar - yangi qatordan boshlanadi:
+- <div>, <p>, <h1>, <ul>
+
+Inline elementlar - qator ichida:
+- <span>, <a>, <strong>, <em>, <img>`,
+    codeExample: `<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Teglar va atributlar</title>
+</head>
+<body>
+    <!-- Sarlavhalar -->
+    <h1 id="main-title">Asosiy sarlavha</h1>
+    <h2>Ikkinchi darajali</h2>
+    
+    <!-- Matn formatlash -->
+    <p>Bu oddiy paragraf. <strong>Bu muhim matn</strong> va <em>bu ta'kidlangan</em>.</p>
+    
+    <!-- Havolalar -->
+    <h3>Foydali havolalar:</h3>
+    <p>
+        <a href="https://google.com" target="_blank">Google (yangi tabda)</a><br>
+        <a href="https://youtube.com" target="_blank">YouTube</a><br>
+        <a href="tel:+998901234567">📞 Qo'ng'iroq qilish</a><br>
+        <a href="mailto:info@example.com">📧 Email yuborish</a>
+    </p>
+    
+    <!-- Rasmlar -->
+    <h3>Rasmlar:</h3>
+    <img 
+        src="https://picsum.photos/300/200" 
+        alt="Tasodifiy rasm"
+        width="300"
+        height="200"
+    >
+    
+    <!-- ID va Class -->
+    <div id="contact" class="section">
+        <h3>Bog'lanish</h3>
+        <p class="text">Telefon: +998 90 123 45 67</p>
+        <p class="text">Email: info@example.com</p>
+    </div>
+</body>
+</html>`,
+    vsCodeSteps: [
+      "Yangi fayl yarating: portfolio.html",
+      "'!' yozib Enter bosing - shablon chiqadi",
+      "<body> ichiga sarlavha qo'shing: <h1>Ismingiz</h1>",
+      "Rasm qo'shing: <img src=\"URL\" alt=\"tavsif\">",
+      "Havolalar qo'shing: <a href=\"URL\">Matn</a>",
+      "target=\"_blank\" qo'shib, yangi tabda ochilishini sinang",
+      "Saqlang va brauzerda oching"
+    ],
     assignment: {
-      title: "Turli teglar va atributlardan foydalaning",
-      description: "Shaxsiy portfolio sahifa yarating: 1) h1 da ismingiz (id='name'), 2) Rasmingiz yoki placeholder rasm (alt bilan), 3) O'zingiz haqida 2 ta paragraf (class='about'), 4) 3 ta havola - ijtimoiy tarmoqlaringizga (target='_blank'), 5) hr bilan ajratilgan footer bo'limi.",
-      hint: "Har bir img tegida alt atributi bo'lishi kerak. Havolalar uchun href='https://...' formatidan foydalaning. target='_blank' havolani yangi tabda ochadi."
+      title: "Shaxsiy portfolio sahifa",
+      description: "Portfolio sahifa yarating: 1) h1 da ismingiz (id='name'), 2) Rasmingiz yoki placeholder rasm (https://picsum.photos/200), 3) O'zingiz haqida 2 ta paragraf (class='about'), 4) 3 ta ijtimoiy tarmoq havolasi (target='_blank'), 5) Telefon va email havolasi, 6) hr bilan ajratilgan footer.",
+      hint: "Rasm uchun: <img src='https://picsum.photos/200' alt='Mening rasmim'>. Havolalar uchun target='_blank' qo'shing.",
+      solution: `<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Jasur - Portfolio</title>
+</head>
+<body>
+    <h1 id="name">Jasur Karimov</h1>
+    
+    <img src="https://picsum.photos/200" alt="Jasur Karimov rasmi">
+    
+    <h2>Men haqimda</h2>
+    <p class="about">Men frontend dasturchiman. 3 yillik tajribam bor. HTML, CSS, JavaScript va React texnologiyalarini bilaman.</p>
+    <p class="about">Hozirda startup loyihasida ishlayman. Bo'sh vaqtimda yangi texnologiyalar o'rganaman va blog yozaman.</p>
+    
+    <h2>Ijtimoiy tarmoqlar</h2>
+    <p>
+        <a href="https://github.com/jasur" target="_blank">GitHub</a> | 
+        <a href="https://linkedin.com/in/jasur" target="_blank">LinkedIn</a> | 
+        <a href="https://t.me/jasur" target="_blank">Telegram</a>
+    </p>
+    
+    <h2>Bog'lanish</h2>
+    <p>
+        <a href="tel:+998901234567">📞 +998 90 123 45 67</a><br>
+        <a href="mailto:jasur@example.com">📧 jasur@example.com</a>
+    </p>
+    
+    <hr>
+    
+    <footer>
+        <p>&copy; 2024 Jasur Karimov. Barcha huquqlar himoyalangan.</p>
+    </footer>
+</body>
+</html>`
     }
   },
   {
     id: 3,
     title: "HTML ro'yxatlar va jadvallar",
-    description: "Tartibli va tartibsiz ro'yxatlar, jadval yaratish usullari",
+    description: "Tartibli va tartibsiz ro'yxatlar, jadval yaratish",
     duration: "35 daqiqa",
-    content: `## Ro'yxatlar (Lists)
+    content: `## Ro'yxatlar nima uchun kerak?
 
-Ro'yxatlar ma'lumotlarni tartibli ko'rsatish uchun ishlatiladi. HTML da 3 xil ro'yxat bor.
+Ma'lumotlarni tartibli ko'rsatish uchun. Masalan:
+- Menyu bandlari
+- Qadamlar ro'yxati
+- Xarid savati
 
-### Tartibsiz ro'yxat (Unordered List)
+## Tartibsiz ro'yxat (ul)
 
-<ul> tegi - nuqtalar bilan belgilangan ro'yxat. Tartib muhim bo'lmagan hollarda ishlatiladi.
+Nuqtalar bilan. Tartib muhim emas:
 
-Ishlatish holatlari:
-- Menyular
-- Xususiyatlar ro'yxati
-- Afzalliklar
-
-### Tartibli ro'yxat (Ordered List)
-
-<ol> tegi - raqamlar yoki harflar bilan belgilangan ro'yxat. Ketma-ketlik muhim bo'lganda ishlatiladi.
-
-Ishlatish holatlari:
-- Qadamlar, yo'riqnomalar
-- Reyting, top ro'yxatlar
-- Retseptlar
-
-### Ta'rifli ro'yxat (Description List)
-
-<dl> tegi - atama va uning ta'rifi uchun. Lug'at yoki FAQ uchun ideal.
-
-## Jadvallar (Tables)
-
-Jadvallar ma'lumotlarni qator va ustunlarda ko'rsatish uchun ishlatiladi.
-
-### Jadval teglari:
-
-- <table> - jadvalni boshlash
-- <thead> - jadval sarlavhasi qismi
-- <tbody> - jadval tanasi
-- <tfoot> - jadval pastki qismi
-- <tr> - qator (table row)
-- <th> - sarlavha katagi (table header) - avtomatik qalin
-- <td> - oddiy katak (table data)
-
-### Jadval atributlari:
-
-- colspan - bir nechta ustunni birlashtirish
-- rowspan - bir nechta qatorni birlashtirish
-- border - chegara (CSS da yaxshiroq)
-
-### Qachon jadval ishlatish kerak?
-
-✅ To'g'ri: ma'lumotlarni ko'rsatish (hisobotlar, jadvallar, taqqoslash)
-❌ Noto'g'ri: sahifa layouti uchun (flexbox/grid ishlating)
-
-## Ichma-ich ro'yxatlar (Nested Lists)
-
-Ro'yxatlar ichida boshqa ro'yxatlar bo'lishi mumkin. Bu ierarxik ma'lumotlar uchun foydali (masalan, fayl tuzilmasi).`,
-    codeExample: `<!-- Tartibsiz ro'yxat -->
-<h3>Mening sevimli taomlarim:</h3>
 <ul>
-    <li>Osh</li>
-    <li>Lag'mon</li>
-    <li>Somsa</li>
-    <li>Manti</li>
+    <li>Olma</li>
+    <li>Banan</li>
+    <li>Uzum</li>
 </ul>
 
-<!-- Tartibli ro'yxat - type bilan -->
-<h3>Dasturlashni o'rganish bosqichlari:</h3>
-<ol type="1">
-    <li>HTML asoslarini o'rganing</li>
-    <li>CSS bilan tanishing</li>
+Natija:
+• Olma
+• Banan
+• Uzum
+
+## Tartibli ro'yxat (ol)
+
+Raqamlar bilan. Tartib muhim:
+
+<ol>
+    <li>HTML o'rganing</li>
+    <li>CSS o'rganing</li>
     <li>JavaScript o'rganing</li>
-    <li>Framework tanlang</li>
 </ol>
 
-<!-- Ichma-ich ro'yxat -->
+Natija:
+1. HTML o'rganing
+2. CSS o'rganing
+3. JavaScript o'rganing
+
+## Ichma-ich ro'yxat
+
+Ro'yxat ichida ro'yxat:
+
 <ul>
     <li>Frontend
         <ul>
             <li>HTML</li>
             <li>CSS</li>
-            <li>JavaScript</li>
         </ul>
     </li>
-    <li>Backend
-        <ul>
-            <li>Node.js</li>
-            <li>Python</li>
-        </ul>
-    </li>
+    <li>Backend</li>
 </ul>
 
-<!-- Ta'rifli ro'yxat -->
-<dl>
-    <dt>HTML</dt>
-    <dd>Veb-sahifa strukturasi uchun til</dd>
-    
-    <dt>CSS</dt>
-    <dd>Veb-sahifa dizayni uchun til</dd>
-</dl>
+## Jadvallar
 
-<!-- To'liq jadval -->
-<table border="1">
-    <thead>
-        <tr>
-            <th>Ism</th>
-            <th>Yosh</th>
-            <th>Kasb</th>
-            <th>Shahar</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>Ali</td>
-            <td>25</td>
-            <td>Dasturchi</td>
-            <td>Toshkent</td>
-        </tr>
-        <tr>
-            <td>Malika</td>
-            <td>23</td>
-            <td>Dizayner</td>
-            <td>Samarqand</td>
-        </tr>
-        <tr>
-            <td colspan="2">Jami: 2 kishi</td>
-            <td colspan="2">O'rtacha yosh: 24</td>
-        </tr>
-    </tbody>
-</table>`,
+Jadval = qatorlar + ustunlar. Excel jadvaliga o'xshaydi.
+
+Asosiy teglar:
+- <table> - jadval
+- <tr> - qator (table row)
+- <th> - sarlavha katak (table header)
+- <td> - oddiy katak (table data)
+
+Struktura:
+- <thead> - sarlavha qismi
+- <tbody> - asosiy qism
+- <tfoot> - pastki qism (ixtiyoriy)
+
+## Jadval atributlari
+
+- colspan="2" - 2 ta ustunni birlashtirish
+- rowspan="2" - 2 ta qatorni birlashtirish`,
+    codeExample: `<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Ro'yxatlar va Jadvallar</title>
+</head>
+<body>
+    <h1>Ro'yxatlar</h1>
+    
+    <!-- Tartibsiz ro'yxat -->
+    <h2>Mening sevimli taomlarim:</h2>
+    <ul>
+        <li>Osh</li>
+        <li>Lag'mon</li>
+        <li>Somsa</li>
+        <li>Manti</li>
+    </ul>
+    
+    <!-- Tartibli ro'yxat -->
+    <h2>Dasturlashni o'rganish bosqichlari:</h2>
+    <ol>
+        <li>HTML asoslarini o'rganing</li>
+        <li>CSS bilan tanishing</li>
+        <li>JavaScript o'rganing</li>
+        <li>Framework tanlang (React)</li>
+    </ol>
+    
+    <!-- Ichma-ich ro'yxat -->
+    <h2>Web texnologiyalar:</h2>
+    <ul>
+        <li>Frontend
+            <ul>
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>JavaScript</li>
+            </ul>
+        </li>
+        <li>Backend
+            <ul>
+                <li>Node.js</li>
+                <li>Python</li>
+                <li>PHP</li>
+            </ul>
+        </li>
+    </ul>
+    
+    <hr>
+    
+    <h1>Jadval</h1>
+    
+    <!-- To'liq jadval -->
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Ism</th>
+                <th>Yosh</th>
+                <th>Kasb</th>
+                <th>Shahar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Ali</td>
+                <td>25</td>
+                <td>Dasturchi</td>
+                <td>Toshkent</td>
+            </tr>
+            <tr>
+                <td>Malika</td>
+                <td>23</td>
+                <td>Dizayner</td>
+                <td>Samarqand</td>
+            </tr>
+            <tr>
+                <td>Jasur</td>
+                <td>28</td>
+                <td>Menejer</td>
+                <td>Buxoro</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4"><strong>Jami: 3 kishi</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>`,
+    vsCodeSteps: [
+      "Yangi fayl: cv.html",
+      "<ul> bilan ko'nikmalar ro'yxatini yozing",
+      "<ol> bilan ta'lim bosqichlarini yozing",
+      "<table> bilan ish tajribasi jadvalini yarating",
+      "<thead> va <tbody> ishlating",
+      "border='1' qo'shib chegarani ko'ring",
+      "Brauzerda oching va tekshiring"
+    ],
     assignment: {
-      title: "Ro'yxat va jadval yarating",
-      description: "Shaxsiy CV sahifa yarating: 1) Tartibsiz ro'yxatda 5 ta ko'nikmangiz, 2) Tartibli ro'yxatda ta'lim bosqichlaringiz (maktab, kollej, universitet), 3) Jadvalda ish tajribangiz (kompaniya, lavozim, yillar, tavsif) - kamida 2 qator. 4) Ichma-ich ro'yxatda texnik bilimlaringiz (Frontend: HTML, CSS... Backend: ...).",
-      hint: "Jadvalda thead va tbody ishlating. colspan atributi bir nechta ustunni birlashtiradi. Ichma-ich ro'yxat uchun <li> ichida yangi <ul> boshlang."
+      title: "Shaxsiy CV sahifasi",
+      description: "CV sahifa yarating: 1) Tartibsiz ro'yxatda 5 ta texnik ko'nikmangiz, 2) Tartibli ro'yxatda ta'lim bosqichlaringiz (maktab, kollej, universitet - yillar bilan), 3) Ish tajribasi jadvali (kompaniya, lavozim, yillar, qisqa tavsif) - kamida 3 qator, 4) Ichma-ich ro'yxatda tillar (Frontend: HTML, CSS, JS; Backend: Node.js, Python).",
+      hint: "Jadvalda <thead> va <tbody> ishlating. colspan bilan footer yarating.",
+      solution: `<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <title>Jasur Karimov - CV</title>
+</head>
+<body>
+    <h1>Jasur Karimov</h1>
+    <p>Frontend Developer | Toshkent, O'zbekiston</p>
+    
+    <hr>
+    
+    <h2>Texnik ko'nikmalar</h2>
+    <ul>
+        <li>HTML5 va CSS3</li>
+        <li>JavaScript (ES6+)</li>
+        <li>React.js</li>
+        <li>TypeScript</li>
+        <li>Git va GitHub</li>
+    </ul>
+    
+    <h2>Ta'lim</h2>
+    <ol>
+        <li>2010-2019: 45-maktab, Toshkent</li>
+        <li>2019-2021: IT Park Academy, Frontend kursi</li>
+        <li>2021-2025: TATU, Dasturiy injiniring</li>
+    </ol>
+    
+    <h2>Ish tajribasi</h2>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Kompaniya</th>
+                <th>Lavozim</th>
+                <th>Yillar</th>
+                <th>Tavsif</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>IT Solutions</td>
+                <td>Junior Developer</td>
+                <td>2021-2022</td>
+                <td>Landing sahifalar yaratish</td>
+            </tr>
+            <tr>
+                <td>WebStudio</td>
+                <td>Frontend Developer</td>
+                <td>2022-2023</td>
+                <td>E-commerce loyihalar</td>
+            </tr>
+            <tr>
+                <td>TechCorp</td>
+                <td>Senior Developer</td>
+                <td>2023-hozir</td>
+                <td>React ilovalar, jamoa boshqaruvi</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4"><strong>Umumiy tajriba: 3+ yil</strong></td>
+            </tr>
+        </tfoot>
+    </table>
+    
+    <h2>Texnologiyalar</h2>
+    <ul>
+        <li>Frontend
+            <ul>
+                <li>HTML, CSS, JavaScript</li>
+                <li>React, Vue</li>
+                <li>Tailwind CSS</li>
+            </ul>
+        </li>
+        <li>Backend
+            <ul>
+                <li>Node.js, Express</li>
+                <li>Python, Django</li>
+            </ul>
+        </li>
+        <li>Tools
+            <ul>
+                <li>Git, GitHub</li>
+                <li>VS Code, Figma</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>`
     }
   },
   {
@@ -324,129 +546,258 @@ Ro'yxatlar ichida boshqa ro'yxatlar bo'lishi mumkin. Bu ierarxik ma'lumotlar uch
     duration: "30 daqiqa",
     content: `## CSS nima?
 
-CSS (Cascading Style Sheets) - HTML elementlarini bezash uchun til. U ranglar, shriftlar, joylashuv, animatsiyalar va boshqalarni boshqaradi. "Cascading" so'zi stillarning ierarxik tartibda qo'llanishini bildiradi.
+CSS (Cascading Style Sheets) - HTML elementlarini bezash uchun til. 
 
-## CSS nimalarni boshqaradi?
+Oddiy tilda: HTML - uyning skelet-konstruksiyasi, CSS - uning bo'yoqlari, mebellari, dekori.
 
-- Ranglar (matn, fon, chegara)
-- Shriftlar (turi, o'lchami, qalinligi)
-- Joylashuv (margin, padding, position)
-- O'lchamlar (width, height)
-- Animatsiyalar va o'tishlar
-- Responsive dizayn
+CSS qila oladi:
+- Ranglar berish
+- Shriftlar o'zgartirish
+- Joylashuvni boshqarish
+- Animatsiyalar qilish
 
 ## CSS qanday ulanadi?
 
-3 xil usul bor, har birining o'z afzalliklari va kamchiliklari:
+### 1. Inline CSS (yomon usul)
+To'g'ridan-to'g'ri elementga yoziladi:
+<p style="color: red;">Qizil matn</p>
 
-### 1. Inline CSS
-style atributi orqali to'g'ridan-to'g'ri elementga yoziladi.
-- ✅ Tez sinash uchun qulay
-- ❌ Kodni takrorlash, qiyin boshqarish
+Kamchilik: har bir elementga alohida yozish kerak.
 
-### 2. Internal CSS
-<style> tegi orqali <head> ichida yoziladi.
-- ✅ Bitta sahifa uchun qulay
-- ❌ Boshqa sahifalarga tarqalmaydi
+### 2. Internal CSS (o'rtacha)
+<head> ichida <style> tegida:
+<style>
+    p { color: red; }
+</style>
 
-### 3. External CSS (Eng yaxshi usul)
-Alohida .css faylda yoziladi va <link> orqali ulanadi.
-- ✅ Qayta ishlatish, toza kod
-- ✅ Brauzer keshlay oladi (tezroq yuklash)
-- ✅ Jamoa ishi uchun qulay
+Kamchilik: faqat shu sahifada ishlaydi.
+
+### 3. External CSS (eng yaxshi!)
+Alohida .css faylda:
+<link rel="stylesheet" href="styles.css">
+
+Afzallik: bir marta yozasiz, hamma sahifada ishlaydi.
 
 ## CSS sintaksisi
 
-CSS qoidasi 3 qismdan iborat:
-
 selector {
     property: value;
-    property2: value2;
 }
 
-- Selector - qaysi elementga stil berish
-- Property - qaysi xususiyatni o'zgartirish
-- Value - yangi qiymat
-
-## CSS izohlar
-
-/* Bu CSS izohi */
-/* Bir nechta
-   qatorli izoh */
-
-## Cascading qoidalari
-
-Bir xil elementga bir nechta stil berilsa, CSS quyidagi tartibda qaror qiladi:
-1. !important (eng yuqori)
-2. Inline style
-3. ID selector
-4. Class selector
-5. Element selector
-6. Inherited styles (eng past)`,
-    codeExample: `/* ===== External CSS fayl (styles.css) ===== */
-
-/* Element selector - barcha p teglarga */
+Misol:
 p {
-    color: #333;
-    font-size: 16px;
+    color: blue;
+    font-size: 18px;
+}
+
+Bu "barcha p teglarga ko'k rang va 18px shrift" degani.
+
+## Asosiy selektorlar
+
+Element: p { }  - barcha paragraflar
+Class: .card { }  - class="card" elementlar
+ID: #header { }  - id="header" element
+
+## Ranglar
+
+Bir necha usulda yoziladi:
+- Nomi: red, blue, green
+- HEX: #ff0000 (qizil)
+- RGB: rgb(255, 0, 0)
+- RGBA: rgba(255, 0, 0, 0.5) - yarim shaffof`,
+    codeExample: `/* ===== styles.css fayli ===== */
+
+/* Barcha elementlar uchun */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body */
+body {
+    font-family: Arial, sans-serif;
     line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
 }
 
-/* Class selector - .card classli elementlarga */
+/* Sarlavhalar */
+h1 {
+    color: #2c3e50;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    color: #34495e;
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Paragraflar */
+p {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+/* Class selektori */
 .card {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
+    background-color: white;
     padding: 20px;
-    margin: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
 }
 
-/* ID selector - #header idli elementga */
+.highlight {
+    background-color: yellow;
+    padding: 2px 5px;
+}
+
+/* ID selektori */
 #header {
-    background-color: #2196F3;
+    background-color: #3498db;
     color: white;
     padding: 20px;
     text-align: center;
 }
 
-/* Bir nechta selector */
-h1, h2, h3 {
-    font-family: 'Arial', sans-serif;
-    color: #1a1a1a;
+/* Havolalar */
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #2980b9;
+    text-decoration: underline;
 }
 
 /* ===== HTML fayl ===== */
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- External CSS ulash -->
     <link rel="stylesheet" href="styles.css">
-    
-    <!-- Internal CSS -->
-    <style>
-        .highlight {
-            background-color: yellow;
-            padding: 2px 5px;
-        }
-    </style>
+    <title>CSS bilan sahifa</title>
 </head>
 <body>
     <div id="header">
-        <h1>Sayt Sarlavhasi</h1>
+        <h1>Mening saytim</h1>
     </div>
     
     <div class="card">
-        <p>Bu <span class="highlight">ajratilgan</span> matn.</p>
+        <h2>Xush kelibsiz!</h2>
+        <p>Bu <span class="highlight">CSS</span> bilan bezatilgan sahifa.</p>
+        <a href="#">Ko'proq o'qish</a>
     </div>
-    
-    <!-- Inline CSS (yaxshi emas) -->
-    <p style="color: red; font-weight: bold;">Qizil qalin matn</p>
 </body>
 </html>`,
+    vsCodeSteps: [
+      "Yangi papka yarating: my-project",
+      "Ichida 2 ta fayl: index.html va styles.css",
+      "index.html da <head> ichiga: <link rel='stylesheet' href='styles.css'>",
+      "styles.css da stillar yozing",
+      "Saqlang va brauzerda oching",
+      "CSS ni o'zgartirib, natijani ko'ring (F5 bosib yangilang)"
+    ],
     assignment: {
       title: "CSS bilan sahifani bezang",
-      description: "Oldingi darsda yaratgan CV sahifangizga external CSS qo'shing: 1) body ga fon rangi va shrift, 2) Sarlavhalarga turli ranglar, 3) Paragraflar uchun line-height va font-size, 4) Jadvalga border va padding, 5) Havolalarga rang va hover effekti. styles.css faylini yarating va HTML ga ulang.",
-      hint: "External CSS uchun <link rel='stylesheet' href='styles.css'> ishlatng. Ranglar uchun hex (#ffffff) yoki rgb(255,255,255) formatini ishlating. Hover uchun: a:hover { color: red; }"
+      description: "Oldingi CV sahifangizga external CSS qo'shing: 1) body - oq fon, qora matn, 2) h1 - ko'k rang (#3498db), markazda, 3) h2 - kulrang, pastda chiziq, 4) Jadvalga border va padding, 5) Havolalarga hover effekti (rang o'zgarsin), 6) .card classi - oq fon, soya, border-radius.",
+      hint: "External CSS uchun <link rel='stylesheet' href='styles.css'>. Hover: a:hover { color: red; }",
+      solution: `/* styles.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f0f0f0;
+    color: #333;
+    padding: 20px;
+}
+
+h1 {
+    color: #3498db;
+    text-align: center;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+h2 {
+    color: #555;
+    font-size: 22px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #3498db;
+}
+
+p {
+    margin-bottom: 10px;
+}
+
+ul, ol {
+    margin-left: 25px;
+    margin-bottom: 15px;
+}
+
+li {
+    margin-bottom: 5px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #e74c3c;
+    text-decoration: underline;
+}
+
+.card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}`
     }
   },
   {
@@ -454,93 +805,79 @@ h1, h2, h3 {
     title: "CSS selektorlar",
     description: "Element, class, ID va murakkab selektorlar",
     duration: "35 daqiqa",
-    content: `## Selektor turlari
+    content: `## Selektor nima?
 
-CSS selektorlar HTML elementlarni tanlash uchun ishlatiladi. To'g'ri selektor tanlash - samarali CSS yozishning kaliti.
+Selektor - qaysi elementga stil berish kerakligini ko'rsatadi.
 
-### 1. Element selektori (Type selector)
+## Asosiy selektorlar
 
-HTML teg nomi bo'yicha tanlaydi. Barcha mos elementlarga ta'sir qiladi.
+### 1. Element selektori
+Teg nomidan foydalanadi:
+p { color: blue; }  - barcha p lar ko'k
 
-p { } - barcha paragraflar
-div { } - barcha divlar
-a { } - barcha havolalar
+### 2. Class selektori (.)
+Nuqta bilan boshlanadi:
+.card { padding: 20px; }
 
-### 2. Class selektori
+HTML: <div class="card">...</div>
 
-class atributi bo'yicha tanlaydi. Nuqta (.) bilan boshlanadi.
+Bir elementda bir nechta class:
+<div class="card featured">...</div>
 
-.card { } - class="card" elementlar
-.btn { } - class="btn" elementlar
+### 3. ID selektori (#)
+# belgisi bilan:
+#header { background: blue; }
 
-Afzalliklari:
-- Bir nechta elementda ishlatilishi mumkin
-- Bir elementda bir nechta class bo'lishi mumkin
-- Eng ko'p ishlatiladigan selektor turi
+HTML: <div id="header">...</div>
 
-### 3. ID selektori
-
-id atributi bo'yicha tanlaydi. # belgisi bilan boshlanadi.
-
-#header { } - id="header" element
-#navigation { } - id="navigation" element
-
-Muhim: ID sahifada takrorlanmasligi kerak!
-
-### 4. Universal selektor
-
-Barcha elementlarni tanlaydi.
-* { } - hamma elementlar
-
-### 5. Atribut selektorlari
-
-Atribut qiymatiga qarab tanlaydi.
-[type="text"] - type="text" elementlar
-[href^="https"] - https bilan boshlanadigan havolalar
-[class*="btn"] - classida "btn" so'zi bor elementlar
+⚠️ ID sahifada takrorlanmasligi kerak!
 
 ## Kombinatsiya selektorlar
 
-### Avlod selektori (Descendant)
-div p { } - div ichidagi barcha p (ichma-ich ham)
+### Avlod (space)
+div p { }  - div ICHIDAGI barcha p lar
 
-### Bevosita bola (Child)
-div > p { } - faqat to'g'ridan-to'g'ri div ichidagi p
+### Bevosita bola (>)
+div > p { }  - faqat TO'G'RI bola p lar
 
-### Qo'shni (Adjacent sibling)
-h2 + p { } - h2 dan keyin kelgan birinchi p
-
-### Umumiy qo'shni (General sibling)
-h2 ~ p { } - h2 dan keyin kelgan barcha p
+### Qo'shni (+)
+h2 + p { }  - h2 dan KEYIN kelgan birinchi p
 
 ## Pseudo-class selektorlar
 
 Elementning maxsus holatini tanlaydi:
-- :hover - sichqoncha ustida
-- :active - bosilgan payt
-- :focus - fokusda (input)
-- :first-child - birinchi bola
-- :last-child - oxirgi bola
-- :nth-child(n) - n-chi bola
 
-## Selektor prioriteti (Specificity)
+:hover - sichqoncha ustida
+:active - bosilgan payt
+:focus - fokusda (input)
+:first-child - birinchi bola
+:last-child - oxirgi bola
+:nth-child(2) - 2-chi bola
+:nth-child(odd) - toq bolalar
+:nth-child(even) - juft bolalar
 
-Bir xil elementga bir nechta qoida mos kelsa:
-1. Inline style (1000 ball)
-2. ID selector (100 ball)
-3. Class/attribute/pseudo-class (10 ball)
-4. Element/pseudo-element (1 ball)`,
-    codeExample: `/* Element selektorlari */
+## Selektor prioriteti
+
+Qaysi biri kuchli?
+1. !important (eng kuchli, ishlatmang!)
+2. Inline style: style="..."
+3. ID: #header
+4. Class: .card
+5. Element: p
+
+Maslahat: Asosan class ishlating!`,
+    codeExample: `/* ===== Selektorlar misollar ===== */
+
+/* Element selektori */
 body {
-    font-family: 'Segoe UI', Arial, sans-serif;
-    line-height: 1.6;
-    color: #333;
+    font-family: Arial, sans-serif;
 }
 
-h1 { font-size: 2.5rem; }
-h2 { font-size: 2rem; }
+h1 {
+    font-size: 2.5rem;
+}
 
-/* Class selektorlari */
+/* Class selektori */
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -552,28 +889,29 @@ h2 { font-size: 2rem; }
     padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
+    text-decoration: none;
 }
 
 .btn-primary {
-    background-color: #007bff;
+    background-color: #3498db;
     color: white;
 }
 
-.btn-secondary {
-    background-color: #6c757d;
+.btn-danger {
+    background-color: #e74c3c;
     color: white;
 }
 
 /* ID selektori */
-#main-navigation {
-    background-color: #343a40;
-    padding: 15px 0;
+#navigation {
+    background-color: #333;
+    padding: 15px;
 }
 
-/* Kombinatsiya selektorlar */
+/* Kombinatsiya */
 .card .title {
-    font-size: 1.25rem;
-    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
 }
 
 .nav > li {
@@ -581,42 +919,229 @@ h2 { font-size: 2rem; }
     margin-right: 20px;
 }
 
-/* Atribut selektori */
-input[type="text"] {
-    border: 1px solid #ccc;
-    padding: 8px;
-}
-
-a[href^="https"] {
-    color: green; /* Xavfsiz havolalar yashil */
+h2 + p {
+    font-size: 18px;
+    color: #666;
 }
 
 /* Pseudo-class */
 a:hover {
-    color: #0056b3;
-    text-decoration: underline;
+    color: #e74c3c;
+}
+
+.btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
 }
 
 .btn:active {
-    transform: scale(0.98);
+    transform: translateY(0);
 }
 
+input:focus {
+    outline: 2px solid #3498db;
+    border-color: #3498db;
+}
+
+/* nth-child */
 li:first-child {
     font-weight: bold;
 }
 
-li:nth-child(odd) {
-    background-color: #f8f9fa;
+li:last-child {
+    border-bottom: none;
 }
 
-/* Murakkab selektor */
-.card:hover .card-title {
-    color: #007bff;
+tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+
+tr:nth-child(odd) {
+    background-color: white;
+}
+
+/* Atribut selektori */
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+input[type="submit"] {
+    background-color: #3498db;
+    color: white;
+    border: none;
+}
+
+a[href^="https"] {
+    color: green; /* Xavfsiz havolalar */
+}
+
+a[href$=".pdf"] {
+    color: red; /* PDF havolalar */
 }`,
+    vsCodeSteps: [
+      "styles.css faylingizni oching",
+      "Turli selektorlar qo'shing",
+      ".card ichidagi .title uchun stil: .card .title { }",
+      ":hover effekti qo'shing",
+      ":nth-child(even) bilan juft qatorlarni ranglang",
+      "DevTools (F12) da selektorlarni tekshiring"
+    ],
     assignment: {
       title: "Selektorlar bilan amaliyot",
-      description: "Sahifa yarating va quyidagi selektorlarni ishlating: 1) 3 ta turli class (.card, .highlight, .btn), 2) 2 ta ID (#header, #footer), 3) Kombinatsiya: .nav > li va .card .title, 4) Pseudo-class: :hover 3 ta elementda, :first-child, :nth-child(even), 5) Atribut selector: input[type='email']. Har bir selektor turlicha stil bersin.",
-      hint: "Bir elementga bir nechta class berish: class='btn btn-primary'. Specificity: ID > class > element. nth-child(even) juft, odd toq elementlarni tanlaydi."
+      description: "Sahifa yarating va quyidagilarni ishlating: 1) 3 xil class (.container, .card, .btn) - har biriga stil, 2) 1 ta ID (#main-header), 3) Kombinatsiya: .nav > li va .card .title, 4) Pseudo-classlar: :hover (3 joyda), :first-child, :nth-child(even), 5) Atribut selektori: input[type='text'] va input[type='submit'].",
+      hint: "Bir elementga bir nechta class: class='btn btn-primary'. :nth-child(even) juft qatorlar uchun.",
+      solution: `/* Selektorlar amaliyot */
+
+/* Element selektorlar */
+body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+/* Class selektorlar */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.card .title {
+    font-size: 22px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.card .description {
+    color: #666;
+    line-height: 1.6;
+}
+
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background: #3498db;
+    color: white;
+}
+
+.btn-primary:hover {
+    background: #2980b9;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #95a5a6;
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #7f8c8d;
+}
+
+/* ID selektor */
+#main-header {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    padding: 40px 20px;
+    text-align: center;
+}
+
+/* Kombinatsiya selektorlar */
+.nav {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.nav > li {
+    display: inline-block;
+}
+
+.nav > li > a {
+    color: white;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav > li > a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+/* Pseudo-classlar */
+.list li:first-child {
+    font-weight: bold;
+    color: #3498db;
+}
+
+.list li:last-child {
+    font-style: italic;
+}
+
+.table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+.table tr:nth-child(odd) {
+    background: white;
+}
+
+.table tr:hover {
+    background: #e8f4fc;
+}
+
+/* Atribut selektorlar */
+input[type="text"],
+input[type="email"] {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus {
+    border-color: #3498db;
+    outline: none;
+}
+
+input[type="submit"] {
+    background: #27ae60;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background: #219a52;
+}`
     }
   },
   {
@@ -626,131 +1151,254 @@ li:nth-child(odd) {
     duration: "40 daqiqa",
     content: `## Box Model nima?
 
-CSS Box Model - har bir HTML elementining joylashuvini tushuntiradigan konsepsiya. Har bir element to'rtburchak quti sifatida ko'riladi va bu quti 4 qatlamdan iborat:
+Har bir HTML element to'rtburchak "quti" hisoblanadi. Bu quti 4 qatlamdan iborat:
 
-1. **Content** - Matn, rasm va boshqa kontent joylashadigan ichki maydon
-2. **Padding** - Kontent atrofidagi ichki bo'shliq (fon rangi ta'sir qiladi)
-3. **Border** - Chegara (rang, qalinlik, stil bor)
-4. **Margin** - Tashqi bo'shliq (boshqa elementlardan masofa, shaffof)
+1. **Content** - ichki matn/rasm (kontent)
+2. **Padding** - kontent atrofidagi ichki bo'shliq
+3. **Border** - chegara (ramka)
+4. **Margin** - tashqi bo'shliq (boshqa elementlardan masofa)
+
+Tasavvur qiling: content - surat, padding - ramka ichi, border - ramkaning o'zi, margin - devordan masofa.
 
 ## Content (Kontent)
 
-Elementning asosiy maydoni. width va height xususiyatlari bilan boshqariladi.
-
-width - kenglik
-height - balandlik
-min-width, max-width - chegaralar
-min-height, max-height - chegaralar
+width va height bilan o'lcham beramiz:
+.box {
+    width: 200px;
+    height: 100px;
+}
 
 ## Padding (Ichki bo'shliq)
 
-Kontent va chegara orasidagi masofa. Fon rangi bu yerda ko'rinadi.
+Kontent atrofidagi masofa. Fon rangi QOPLIYDI.
 
-padding: 20px; - barcha tomondan
-padding: 10px 20px; - yuqori/pastdan 10, chap/o'ngdan 20
-padding: 10px 20px 15px 25px; - yuqori, o'ng, past, chap (soat yo'nalishida)
+padding: 20px;  - barcha tomondan 20px
+padding: 10px 20px;  - tepa/past 10, chap/o'ng 20
+padding: 10px 20px 15px 25px;  - tepa, o'ng, past, chap
+
+Yoki alohida:
 padding-top, padding-right, padding-bottom, padding-left
 
 ## Border (Chegara)
 
-Elementning chegarasi. 3 ta xususiyat bor:
-- border-width - qalinlik
-- border-style - stil (solid, dashed, dotted, double, none)
-- border-color - rang
+.box {
+    border: 2px solid #333;
+}
 
-Qisqa yozuv: border: 2px solid #333;
+Stillar: solid, dashed, dotted, double, none
 
-border-radius - burchaklarni yumaloqlash
+border-radius: 10px;  - burchaklarni yumaloqlash
+border-radius: 50%;  - doira
 
 ## Margin (Tashqi bo'shliq)
 
-Elementlar orasidagi masofa. Shaffof bo'ladi.
+Boshqa elementlardan masofa. Shaffof!
 
-margin: auto; - gorizontal markazlashtirish
-Manfiy margin ham ishlatilishi mumkin: margin-top: -20px;
+margin: 20px;
+margin: 0 auto;  - gorizontal markazlash
 
-Margin collapse: Vertikal marginlar birlashadi (kattasi qoladi).
+## Box-sizing (Muhim!)
 
-## Box-sizing
+Standartda width faqat content o'lchami. Padding/border QO'SHILADI.
 
-Standart holatda width va height faqat content o'lchamini belgilaydi. Padding va border qo'shiladi.
+Yaxshiroq usul:
+* {
+    box-sizing: border-box;
+}
 
-box-sizing: content-box; - standart
-box-sizing: border-box; - padding va border width ichiga kiradi (tavsiya etiladi)
+Endi width = content + padding + border. Ancha qulay!
 
-Global qo'llash:
-* { box-sizing: border-box; }`,
-    codeExample: `/* Box-sizing global */
+## Box-shadow (Soya)
+
+box-shadow: x y blur color;
+box-shadow: 0 4px 10px rgba(0,0,0,0.2);`,
+    codeExample: `/* Box Model CSS */
+
+/* Har doim box-sizing: border-box */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
-/* Asosiy element */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background: #f0f0f0;
+}
+
+/* Oddiy kartochka */
 .card {
     /* Content o'lchami */
-    width: 350px;
-    height: auto; /* Kontentga qarab o'sadi */
-    min-height: 200px;
+    width: 300px;
     
     /* Ichki bo'shliq */
-    padding: 25px;
-    padding-bottom: 30px; /* Pastdan ko'proq */
+    padding: 20px;
+    padding-bottom: 25px;
     
     /* Chegara */
-    border: 2px solid #e0e0e0;
+    border: 1px solid #ddd;
     border-radius: 12px;
-    border-top: 4px solid #007bff; /* Yuqori chegara boshqacha */
+    border-top: 4px solid #3498db;
     
     /* Tashqi bo'shliq */
     margin: 20px;
-    margin-bottom: 30px;
     
-    /* Markazlashtirish */
-    /* margin: 20px auto; */
+    /* Fon va soya */
+    background: white;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
-/* Turli chegara stillari */
-.border-examples {
-    border: 3px solid #333;      /* Oddiy chiziq */
-    border: 3px dashed #333;     /* Punktir */
-    border: 3px dotted #333;     /* Nuqtali */
-    border: 3px double #333;     /* Ikki chiziq */
+.card h3 {
+    margin: 0 0 10px 0;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
 }
 
-/* Yumaloq burchaklar */
-.rounded-small { border-radius: 5px; }
-.rounded-medium { border-radius: 10px; }
-.rounded-large { border-radius: 20px; }
-.circle { border-radius: 50%; } /* To'liq doira */
-
-/* Har bir burchak alohida */
-.custom-radius {
-    border-top-left-radius: 20px;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 0;
+.card p {
+    margin: 0;
+    color: #666;
 }
 
-/* Soya */
-.shadow {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+/* Markazlash */
+.centered-box {
+    width: 400px;
+    margin: 0 auto; /* Gorizontal markaz */
+    padding: 30px;
+    background: white;
+    border-radius: 10px;
 }
 
-.shadow-hover:hover {
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-    transform: translateY(-2px);
+/* Turli border */
+.border-solid { border: 3px solid #333; }
+.border-dashed { border: 3px dashed #333; }
+.border-dotted { border: 3px dotted #333; }
+
+/* Border-radius */
+.rounded-sm { border-radius: 5px; }
+.rounded-md { border-radius: 10px; }
+.rounded-lg { border-radius: 20px; }
+.circle { border-radius: 50%; }
+
+/* Hover effekt bilan soya */
+.card-hover {
     transition: all 0.3s ease;
 }
 
-/* Outline (border ga o'xshash, lekin layout ga ta'sir qilmaydi) */
-.focus-outline:focus {
-    outline: 3px solid #007bff;
-    outline-offset: 2px;
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Button misol */
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 5px;
+    border: none;
+    border-radius: 8px;
+    background: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button:hover {
+    background: #2980b9;
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
 }`,
+    vsCodeSteps: [
+      "Yangi HTML va CSS fayl yarating",
+      "* { box-sizing: border-box; } qo'shing",
+      ".card classi yarating - padding, border, margin",
+      "DevTools (F12) oching, element ustida Box Model ko'ring",
+      "Padding/margin qiymatlarini o'zgartirib ko'ring",
+      "box-shadow qo'shib soya yarating",
+      ":hover da soyani kuchaytiring"
+    ],
     assignment: {
-      title: "Box Model bilan kartochkalar",
-      description: "3 ta mahsulot kartochkasi yarating: 1) Har birida width: 300px, padding: 20px, border: 1px solid, margin: 15px, 2) Rasm, sarlavha, tavsif va narx bo'lsin, 3) Tugmaga padding va border-radius qo'shing, 4) Kartochkaga box-shadow va hover effekti, 5) Turli border-radius qiymatlari sinab ko'ring. box-sizing: border-box global ishlatilsin.",
-      hint: "box-sizing: border-box; * selektorga qo'ying. box-shadow: x y blur color formatida. rgba(0,0,0,0.1) yarim shaffof qora."
+      title: "Box Model bilan mahsulot kartochkalari",
+      description: "3 ta mahsulot kartochkasi yarating: 1) width: 280px, padding: 20px, border: 1px solid, margin: 15px, 2) Har birida rasm, sarlavha, tavsif, narx va tugma, 3) border-radius: 12px, 4) box-shadow va hover effekti, 5) Tugmaga padding va border-radius. Hammasini box-sizing: border-box bilan.",
+      hint: "* { box-sizing: border-box; } - bu hamma elementlarga qo'llanadi. Hover uchun transition: all 0.3s ease; qo'shing.",
+      solution: `/* Mahsulot kartochalari CSS */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f5f5f5;
+    padding: 40px;
+}
+
+.products {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    width: 280px;
+    padding: 20px;
+    background: white;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    margin: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.product-card h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.product-card p {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.product-card .price {
+    font-size: 24px;
+    font-weight: bold;
+    color: #27ae60;
+    margin-bottom: 15px;
+}
+
+.product-card .btn {
+    display: block;
+    width: 100%;
+    padding: 12px 20px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.product-card .btn:hover {
+    background: #2980b9;
+}`
     }
   },
   {
@@ -760,145 +1408,149 @@ Global qo'llash:
     duration: "45 daqiqa",
     content: `## Flexbox nima?
 
-Flexbox (Flexible Box) - elementlarni gorizontal yoki vertikal yo'nalishda moslashuvchan tarzda joylashtirishning zamonaviy usuli. U 2009 yilda kiritilgan va hozir barcha brauzerlarda qo'llab-quvvatlanadi.
+Flexbox - elementlarni QATORDA yoki USTUNDA tartibga solish usuli. Navbarlar, kartochkalar, formalar uchun ideal.
 
-## Asosiy tushunchalar
+## Qanday yoqiladi?
 
-- Flex Container - display: flex; berilgan ota element
-- Flex Items - container ichidagi bevosita bola elementlar
-- Main Axis - asosiy o'q (default: gorizontal)
-- Cross Axis - kesishuvchi o'q (default: vertikal)
-
-## Container xususiyatlari
-
-### display: flex;
-Flexbox ni yoqadi. Container inline-flex ham bo'lishi mumkin.
-
-### flex-direction
-Asosiy o'q yo'nalishini belgilaydi:
-- row (default) - chapdan o'ngga
-- row-reverse - o'ngdan chapga
-- column - yuqoridan pastga
-- column-reverse - pastdan yuqoriga
-
-### justify-content
-Asosiy o'q bo'ylab joylashuv:
-- flex-start - boshida
-- flex-end - oxirida
-- center - markazda
-- space-between - orasida teng bo'shliq
-- space-around - atrofida teng bo'shliq
-- space-evenly - butunlay teng bo'shliq
-
-### align-items
-Kesishuvchi o'q bo'ylab joylashuv:
-- stretch (default) - cho'ziladi
-- flex-start - boshida
-- flex-end - oxirida
-- center - markazda
-- baseline - matn chizig'i bo'yicha
-
-### flex-wrap
-Elementlar sig'masa:
-- nowrap (default) - bir qatorda qoladi
-- wrap - keyingi qatorga o'tadi
-- wrap-reverse - teskari wrap
-
-### gap
-Elementlar orasidagi bo'shliq:
-- gap: 20px; - barcha yo'nalishda
-- row-gap: 20px; - qatorlar orasida
-- column-gap: 10px; - ustunlar orasida
-
-## Item xususiyatlari
-
-### flex-grow
-Qo'shimcha joy bo'lsa qancha o'sish:
-- 0 - o'smaydi
-- 1 - teng o'sadi
-- 2 - 2 barobar ko'p o'sadi
-
-### flex-shrink
-Joy yetishmasa qancha kichrayish:
-- 1 (default) - kichrayadi
-- 0 - kichraymaydi
-
-### flex-basis
-Boshlang'ich o'lcham (width o'rniga):
-- auto - content ga qarab
-- 200px - aniq o'lcham
-- 25% - foiz
-
-### flex (shorthand)
-flex: grow shrink basis;
-flex: 1; = flex: 1 1 0%;
-
-### align-self
-Bitta elementning alohida joylashuvi (align-items ni override qiladi)
-
-### order
-Elementlar tartibini o'zgartirish (default: 0)`,
-    codeExample: `/* Asosiy Flex Container */
-.flex-container {
+Ota elementga:
+.container {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    padding: 20px;
 }
 
-/* Responsive navbar */
+Shunda ichidagi bolalar "flex items" bo'ladi.
+
+## Asosiy yo'nalish (flex-direction)
+
+flex-direction: row;  - chapdan o'ngga (default)
+flex-direction: column;  - tepadan pastga
+
+## justify-content (gorizontal joylashuv)
+
+flex-start - boshida (default)
+flex-end - oxirida
+center - markazda
+space-between - orasida teng bo'shliq
+space-around - atrofida bo'shliq
+space-evenly - butunlay teng
+
+## align-items (vertikal joylashuv)
+
+stretch - cho'ziladi (default)
+flex-start - tepada
+flex-end - pastda
+center - markazda
+
+## flex-wrap
+
+Sig'masa nima bo'ladi?
+nowrap - bir qatorda qoladi (default)
+wrap - keyingi qatorga o'tadi
+
+## gap
+
+Elementlar orasidagi bo'shliq:
+gap: 20px;
+
+## Flex items xususiyatlari
+
+flex-grow: 1;  - bo'sh joyni egallaydi
+flex-shrink: 0;  - kichraymaydi
+flex-basis: 200px;  - boshlang'ich o'lcham
+
+Qisqa: flex: 1;  = flex: 1 1 0;
+
+## Amaliy misol: Navbar
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+Chapda logo, o'ngda menu - tayyor!`,
+    codeExample: `/* Flexbox CSS */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Navbar ===== */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 30px;
-    background-color: #333;
+    background: #2c3e50;
 }
 
-.nav-logo {
-    font-size: 1.5rem;
+.navbar .logo {
+    font-size: 24px;
+    font-weight: bold;
     color: white;
 }
 
-.nav-links {
+.navbar .nav-links {
     display: flex;
-    gap: 30px;
+    gap: 25px;
     list-style: none;
 }
 
-.nav-links a {
+.navbar .nav-links a {
     color: white;
     text-decoration: none;
 }
 
-/* Kartochkalar grid */
+/* ===== Hero markazlash ===== */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 400px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: white;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+/* ===== Kartochkalar ===== */
 .cards-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    padding: 40px;
 }
 
 .card {
     flex: 0 1 300px; /* o'smaydi, kichrayadi, 300px dan boshlaydi */
-    padding: 20px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    padding: 25px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
 }
 
-/* Teng bo'lingan ustunlar */
+/* ===== Teng ustunlar ===== */
 .equal-columns {
     display: flex;
     gap: 20px;
+    padding: 20px;
 }
 
-.equal-columns > * {
-    flex: 1; /* Hammasi teng o'sadi */
+.equal-columns .column {
+    flex: 1; /* Hammasi teng */
+    padding: 20px;
+    background: #ecf0f1;
+    border-radius: 8px;
 }
 
-/* Sidebar layout */
+/* ===== Sidebar layout ===== */
 .page-layout {
     display: flex;
     min-height: 100vh;
@@ -906,23 +1558,32 @@ Elementlar tartibini o'zgartirish (default: 0)`,
 
 .sidebar {
     flex: 0 0 250px; /* O'zgarmas 250px */
-    background-color: #f5f5f5;
+    background: #34495e;
+    color: white;
+    padding: 20px;
 }
 
 .main-content {
     flex: 1; /* Qolgan joyni egallaydi */
-    padding: 20px;
+    padding: 30px;
+    background: #fff;
 }
 
-/* Vertikal markazlashtirish */
-.center-content {
+/* ===== Footer ===== */
+.footer {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 400px;
+    justify-content: space-between;
+    padding: 40px;
+    background: #2c3e50;
+    color: white;
 }
 
-/* Footer elementlarni pastga surish */
+.footer-section {
+    flex: 1;
+    padding: 0 20px;
+}
+
+/* ===== Card ichida tugmani pastga surish ===== */
 .card-with-footer {
     display: flex;
     flex-direction: column;
@@ -936,10 +1597,190 @@ Elementlar tartibini o'zgartirish (default: 0)`,
 .card-footer {
     margin-top: auto; /* Pastga suriladi */
 }`,
+    vsCodeSteps: [
+      "Yangi fayl: flexbox.html va flexbox.css",
+      "Container yarating: <div class='container'>",
+      "CSS da display: flex; qo'shing",
+      "justify-content qiymatlarini sinab ko'ring",
+      "DevTools → Elements → Flexbox badge bosing",
+      "flex-wrap: wrap; bilan responsive qiling",
+      "gap: 20px; bilan bo'shliq qo'shing"
+    ],
     assignment: {
-      title: "Flexbox bilan to'liq sahifa",
-      description: "Flexbox yordamida sahifa layouti yarating: 1) Navbar: chapda logo, o'rtada 4 ta havola, o'ngda 'Kirish' tugmasi (space-between), 2) Hero section: markazda sarlavha va tugma (center, column), 3) 4 ta xususiyat kartochkasi qatori (flex-wrap), 4) Footer: 3 ta ustun (flex: 1). Barcha bo'shliqlar gap bilan.",
-      hint: "Navbar: justify-content: space-between. Hero: flex-direction: column va align-items: center. Kartochkalar uchun flex-wrap: wrap. Footer ustunlari: flex: 1."
+      title: "Flexbox bilan to'liq sahifa layout",
+      description: "Flexbox yordamida sahifa yarating: 1) Navbar: chapda logo, o'rtada 4 ta link, o'ngda Kirish tugmasi (space-between), 2) Hero: markazda h1 va tugma (column, center), 3) 4 ta xususiyat kartochkasi (flex-wrap, gap), 4) 3 ustunli footer. Hamma joyda gap ishlating.",
+      hint: "Navbar: justify-content: space-between. Hero: flex-direction: column; align-items: center. Kartochkalar: flex-wrap: wrap.",
+      solution: `/* Flexbox sahifa layout */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: #2c3e50;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 16px;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #3498db;
+}
+
+.btn-login {
+    padding: 10px 25px;
+    background: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.btn-login:hover {
+    background: #2980b9;
+}
+
+/* Hero */
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 500px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+.hero h1 {
+    font-size: 52px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 20px;
+    margin-bottom: 30px;
+    max-width: 600px;
+}
+
+.hero .btn-cta {
+    padding: 15px 40px;
+    font-size: 18px;
+    background: white;
+    color: #667eea;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.hero .btn-cta:hover {
+    transform: scale(1.05);
+}
+
+/* Xususiyatlar */
+.features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    padding: 60px 40px;
+    background: #f5f5f5;
+}
+
+.feature-card {
+    flex: 0 1 280px;
+    padding: 30px;
+    background: white;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.feature-card .icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.feature-card h3 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.feature-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Footer */
+.footer {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding: 50px 40px;
+    background: #2c3e50;
+    color: white;
+}
+
+.footer-section {
+    flex: 1;
+}
+
+.footer-section h4 {
+    margin-bottom: 20px;
+    color: #3498db;
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section li {
+    margin-bottom: 10px;
+}
+
+.footer-section a {
+    color: #bdc3c7;
+    text-decoration: none;
+}
+
+.footer-section a:hover {
+    color: white;
+}`
     }
   },
   {
@@ -947,112 +1788,103 @@ Elementlar tartibini o'zgartirish (default: 0)`,
     title: "CSS Grid asoslari",
     description: "Ikki o'lchovli murakkab layoutlar uchun Grid",
     duration: "45 daqiqa",
-    content: `## CSS Grid nima?
+    content: `## Grid nima?
 
-CSS Grid - ikki o'lchovli (qator VA ustunlar) layout yaratish tizimi. Flexbox bir o'lchovda ishlasa, Grid bir vaqtda ikkala o'lchamni boshqaradi. Murakkab sahifa strukturalari uchun ideal.
+Grid - ikki o'lchamli layout tizimi. Flexbox QATOR yoki USTUN bilan ishlasa, Grid IKKALASI bilan bir vaqtda.
 
-## Flexbox vs Grid
+Qachon Grid?
+- Sahifa layouti (header, sidebar, content, footer)
+- Galereya
+- Dashboard
 
-Flexbox:
-- Bir yo'nalishda (qator YOKI ustun)
-- Kontent asosida
-- Komponentlar ichida
+Qachon Flexbox?
+- Navbar elementlari
+- Tugmalar qatori
+- Card ichidagi elementlar
 
-Grid:
-- Ikki yo'nalishda (qator VA ustun)
-- Layout asosida
-- Sahifa strukturasi uchun
+## Qanday yoqiladi?
 
-## Asosiy tushunchalar
+.container {
+    display: grid;
+}
 
-- Grid Container - display: grid; berilgan element
-- Grid Items - container ichidagi bevosita bolalar
-- Grid Lines - chiziqlar (1, 2, 3...)
-- Grid Tracks - qator yoki ustun
-- Grid Cell - bitta katak
-- Grid Area - bir nechta katakdan iborat maydon
+## Ustun va qatorlar
 
-## Container xususiyatlari
+grid-template-columns: 200px 200px 200px; - 3 ta 200px ustun
+grid-template-columns: 1fr 1fr 1fr; - 3 ta teng ustun
+grid-template-columns: repeat(3, 1fr); - yuqoridagi bilan bir xil
 
-### grid-template-columns
-Ustunlarni belgilash:
-- grid-template-columns: 200px 200px 200px; - 3 ta 200px ustun
-- grid-template-columns: 1fr 1fr 1fr; - 3 ta teng ustun
-- grid-template-columns: repeat(3, 1fr); - yuqoridagi bilan bir xil
-- grid-template-columns: 1fr 2fr 1fr; - o'rtadagi 2 barobar keng
-- grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); - responsive!
+fr = fraction (bo'lak). 1fr 2fr = 1/3 va 2/3
 
-### grid-template-rows
-Qatorlarni belgilash (ustunlar kabi)
+## Responsive Grid
 
-### gap (yoki grid-gap)
-Bo'shliqlar:
-- gap: 20px;
-- row-gap: 20px;
-- column-gap: 10px;
+grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 
-### grid-template-areas
-Nomlangan maydonlar bilan layout:
+Bu sehrli kod! Minimal 250px, maksimal teng bo'linadi. Sahifa kichraysa avtomatik kamayadi.
 
-grid-template-areas:
-    "header header header"
-    "sidebar main main"
-    "footer footer footer";
+## gap
 
-## fr birligi
+gap: 20px; - qator va ustunlar orasida bo'shliq
 
-fr (fraction) - mavjud joyning bir qismi.
-1fr 2fr = 1/3 va 2/3
-1fr 1fr 1fr = har biri 1/3
+## grid-template-areas (Nomlash usuli)
 
-## Item xususiyatlari
+Eng qulay usul:
 
-### grid-column va grid-row
-Element joylashuvi:
-- grid-column: 1 / 3; - 1-chi chiziqdan 3-chigacha
-- grid-column: span 2; - 2 ta ustun egallaydi
-- grid-row: 1 / 4; - 1-3 qatorlar
+.container {
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+}
 
-### grid-area
-Nomlangan maydonni egallash:
-- grid-area: header;
+.header { grid-area: header; }
+.sidebar { grid-area: sidebar; }
 
-### justify-self va align-self
-Bitta elementning joylashuvi katak ichida
+## Element joylashuvi
 
-## Implicit Grid
+grid-column: 1 / 3; - 1-chi ustundan 3-chigacha
+grid-column: span 2; - 2 ta ustun egallaydi
+grid-row: 1 / 4; - 1-3 qatorlar`,
+    codeExample: `/* CSS Grid */
 
-Belgilanganidan ko'p element bo'lsa, Grid avtomatik qator/ustun qo'shadi:
-- grid-auto-rows: 200px;
-- grid-auto-columns: 1fr;`,
-    codeExample: `/* Asosiy Grid */
-.grid-container {
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== Oddiy Grid ===== */
+.simple-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
     gap: 20px;
+    padding: 20px;
 }
 
-/* 12 ustunli tizim */
-.twelve-column {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    gap: 15px;
+.simple-grid .item {
+    padding: 40px;
+    background: #3498db;
+    color: white;
+    text-align: center;
+    border-radius: 8px;
 }
 
-.col-4 { grid-column: span 4; }
-.col-6 { grid-column: span 6; }
-.col-8 { grid-column: span 8; }
-.col-12 { grid-column: span 12; }
-
-/* Responsive kartochkalar */
-.cards-grid {
+/* ===== Responsive Grid ===== */
+.responsive-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
+    padding: 30px;
 }
 
-/* Sahifa layouti - areas bilan */
+.responsive-grid .card {
+    padding: 25px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* ===== Sahifa Layout (areas) ===== */
 .page-layout {
     display: grid;
     grid-template-columns: 250px 1fr;
@@ -1064,30 +1896,51 @@ Belgilanganidan ko'p element bo'lsa, Grid avtomatik qator/ustun qo'shadi:
     min-height: 100vh;
 }
 
-.header { grid-area: header; background: #333; }
-.sidebar { grid-area: sidebar; background: #f5f5f5; }
-.main { grid-area: main; padding: 20px; }
-.footer { grid-area: footer; background: #333; }
-
-/* Galereya - turli o'lchamli elementlar */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(3, 200px);
-    gap: 10px;
+.header {
+    grid-area: header;
+    background: #2c3e50;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
 }
 
-.gallery-item:nth-child(1) {
-    grid-column: span 2;
-    grid-row: span 2;
+.sidebar {
+    grid-area: sidebar;
+    background: #34495e;
+    color: white;
+    padding: 20px;
 }
 
-/* Dashboard layout */
+.main {
+    grid-area: main;
+    padding: 30px;
+    background: #ecf0f1;
+}
+
+.footer {
+    grid-area: footer;
+    background: #2c3e50;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== Dashboard Grid ===== */
 .dashboard {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-auto-rows: minmax(150px, auto);
     gap: 20px;
+    padding: 20px;
+}
+
+.widget {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
 .widget-large {
@@ -1099,153 +1952,349 @@ Belgilanganidan ko'p element bo'lsa, Grid avtomatik qator/ustun qo'shadi:
     grid-column: span 2;
 }
 
-/* Markazlashtirish */
-.center-grid {
+.widget-tall {
+    grid-row: span 2;
+}
+
+/* ===== Galereya ===== */
+.gallery {
     display: grid;
-    place-items: center; /* justify + align */
-    min-height: 100vh;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    padding: 10px;
+}
+
+.gallery img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.gallery .featured {
+    grid-column: span 2;
+    grid-row: span 2;
+}
+
+.gallery .featured img {
+    height: 100%;
 }`,
+    vsCodeSteps: [
+      "Yangi fayl: grid.html va grid.css",
+      "Container yarating, display: grid; qo'shing",
+      "grid-template-columns: repeat(3, 1fr); sinang",
+      "DevTools → Grid badge bosing - chiziqlar ko'rinadi",
+      "auto-fit, minmax() bilan responsive qiling",
+      "grid-template-areas bilan sahifa layout yarating"
+    ],
     assignment: {
-      title: "Grid bilan dashboard",
-      description: "Admin dashboard yarating: 1) Header to'liq kenglikda (grid-template-areas), 2) Chapda sidebar (200px), o'ngda main content, 3) Main ichida 4 ta statistika kartochkasi (2x2 grid), 4) Katta grafik maydoni (span 2), 5) Responsive: kichik ekranda 1 ustun bo'lsin. Barcha layout faqat Grid bilan.",
-      hint: "grid-template-areas ishlatib ko'ring. auto-fit, minmax() responsive qiladi. Media query: @media (max-width: 768px) { grid-template-columns: 1fr; }"
+      title: "Grid bilan Dashboard",
+      description: "Admin dashboard yarating: 1) grid-template-areas bilan: header (to'liq), sidebar (chap), main (o'ng), footer (to'liq), 2) Main ichida 4 ta statistika kartochka (2x2), 3) Katta grafik maydoni (span 2), 4) Responsive: 768px dan kichikda 1 ustun. gap: 20px har joyda.",
+      hint: "grid-template-areas - eng oson usul. @media (max-width: 768px) da grid-template-columns: 1fr; qiling.",
+      solution: `/* Dashboard Grid Layout */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    background: #f0f2f5;
+}
+
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: 250px 1fr;
+    grid-template-rows: 60px 1fr 50px;
+    grid-template-areas:
+        "header header"
+        "sidebar main"
+        "footer footer";
+    min-height: 100vh;
+    gap: 0;
+}
+
+.header {
+    grid-area: header;
+    background: #2c3e50;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 25px;
+}
+
+.sidebar {
+    grid-area: sidebar;
+    background: #34495e;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar-menu {
+    list-style: none;
+}
+
+.sidebar-menu li {
+    padding: 12px 15px;
+    margin-bottom: 5px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.sidebar-menu li:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.main {
+    grid-area: main;
+    padding: 25px;
+    overflow-y: auto;
+}
+
+/* Statistika kartochkalari */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.stat-card h3 {
+    font-size: 14px;
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+.stat-card .number {
+    font-size: 32px;
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+/* Katta widgetlar */
+.widgets-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.widget {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.widget-large {
+    grid-column: span 2;
+}
+
+.widget h3 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+.footer {
+    grid-area: footer;
+    background: #2c3e50;
+    color: #bdc3c7;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+        grid-template-rows: 60px 1fr 50px;
+        grid-template-areas:
+            "header"
+            "main"
+            "footer";
+    }
+    
+    .sidebar {
+        display: none;
+    }
+    
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .widgets-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .widget-large {
+        grid-column: span 1;
+    }
+}`
     }
   },
   {
     id: 9,
     title: "Responsive dizayn",
-    description: "Media queries, mobile-first va moslashuvchan dizayn",
+    description: "Media queries, mobile-first yondashuvi",
     duration: "40 daqiqa",
     content: `## Responsive dizayn nima?
 
-Responsive (moslashuvchan) dizayn - sahifaning turli ekran o'lchamlarida (telefon, planshet, laptop, katta monitor) yaxshi ko'rinishini ta'minlash usuli. Bugungi kunda trafikning 60%+ mobil qurilmalardan keladi.
+Sahifa turli ekranlarda (telefon, planshet, kompyuter) yaxshi ko'rinishi. Bugungi kunda 60%+ trafik mobildan!
 
 ## Media Queries
 
-Media queries CSS da shartli stillar yozish imkonini beradi.
+Shartli CSS yozish:
 
-Sintaksis:
-@media (shart) {
-    /* shartga mos stilllar */
+@media (max-width: 768px) {
+    /* 768px dan KICHIK ekranlarda */
 }
 
-### Breakpoints (Muhim nuqtalar)
-
-Umumiy qabul qilingan:
-- Mobile: 0-480px
-- Mobile landscape: 481-767px
-- Tablet: 768-1023px
-- Laptop: 1024-1279px
-- Desktop: 1280-1919px
-- Large: 1920px+
-
-Amalda 3-4 ta breakpoint yetarli.
-
-## Mobile-First yondashuvi
-
-Birinchi mobil uchun yozib, keyin katta ekranlar uchun qo'shamiz.
-
-/* Mobil uchun (default) */
-.container { width: 100%; }
-
-/* Tablet va yuqori */
 @media (min-width: 768px) {
-    .container { max-width: 720px; }
+    /* 768px dan KATTA ekranlarda */
+}
+
+## Breakpoints (Muhim nuqtalar)
+
+Keng qo'llaniladigan:
+- 480px - telefon
+- 768px - planshet
+- 1024px - laptop
+- 1280px - desktop
+
+## Mobile-First yondashuvi (Tavsiya!)
+
+Birinchi mobil uchun yozing, keyin kattalar uchun qo'shing:
+
+/* Mobil (default) */
+.container {
+    width: 100%;
+    padding: 15px;
+}
+
+/* Planshet */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+    }
 }
 
 /* Desktop */
 @media (min-width: 1024px) {
-    .container { max-width: 1200px; }
+    .container {
+        max-width: 1200px;
+    }
 }
 
-## Desktop-First yondashuvi
+## Responsive texnikalar
 
-Birinchi desktop uchun, keyin kichraytirish.
+### 1. Foizlar
+width: 100%;  - har doim sig'adi
+max-width: 1200px;  - chegaralaydi
 
-/* Desktop uchun */
-.container { max-width: 1200px; }
+### 2. vw, vh birliklar
+width: 50vw;  - ekran kengligining yarmi
+height: 100vh;  - to'liq balandlik
 
-@media (max-width: 1023px) {
-    .container { max-width: 720px; }
-}
+### 3. clamp() - sehrli shrift
+font-size: clamp(16px, 4vw, 24px);
+Minimal 16px, maksimal 24px, o'rtada moslashuvchan.
 
-@media (max-width: 767px) {
-    .container { width: 100%; }
-}
-
-Mobile-first tavsiya etiladi chunki:
-- Mobil ustuvorlik
-- Kamroq CSS yozish
-- Tezroq mobil yuklash
-
-## Responsive birliklar
-
-### Nisbiy birliklar:
-- % - ota elementga nisbatan
-- vw - viewport kengligi (1vw = 1%)
-- vh - viewport balandligi
-- rem - root font-size ga nisbatan
-- em - joriy font-size ga nisbatan
-
-### Foydali funksiyalar:
-- calc() - hisoblash: calc(100% - 250px)
-- min() - eng kichigini olish: min(100%, 1200px)
-- max() - eng kattasini olish
-- clamp() - min, ideal, max: clamp(1rem, 5vw, 3rem)
-
-## Responsive rasmlar
-
+### 4. max-width rasmlar
 img {
     max-width: 100%;
     height: auto;
 }
 
-## Viewport meta teg
+## Viewport meta (Majburiy!)
 
-HTML da bo'lishi shart:
-<meta name="viewport" content="width=device-width, initial-scale=1.0">`,
-    codeExample: `/* ===== Mobile-First Responsive CSS ===== */
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-/* Global */
+Bu tegni yozmaguningizcha responsive ishlamaydi!`,
+    codeExample: `/* Responsive CSS - Mobile First */
+
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
+/* Mobil uchun (default) */
 body {
+    font-family: 'Segoe UI', sans-serif;
     font-size: 16px;
     line-height: 1.6;
 }
 
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-/* Container */
 .container {
     width: 100%;
     padding: 0 15px;
-    margin: 0 auto;
+}
+
+/* Responsive Typography */
+h1 {
+    font-size: clamp(28px, 6vw, 48px);
+}
+
+h2 {
+    font-size: clamp(22px, 4vw, 36px);
+}
+
+/* Rasmlar */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Navbar - Mobil */
 .navbar {
-    display: flex;
-    flex-direction: column;
     padding: 15px;
+    background: #2c3e50;
 }
 
 .nav-toggle {
-    display: block; /* Hamburger menu */
+    display: block; /* Hamburger ko'rinadi */
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
 }
 
 .nav-links {
-    display: none; /* Yashirin */
+    display: none; /* Mobilda yashirin */
     flex-direction: column;
+    list-style: none;
+    margin-top: 15px;
 }
 
 .nav-links.active {
     display: flex;
+}
+
+.nav-links a {
+    color: white;
+    padding: 10px 0;
+    text-decoration: none;
 }
 
 /* Grid - Mobil */
@@ -1255,35 +2304,36 @@ img {
     gap: 20px;
 }
 
-/* Typography - Responsive */
-h1 {
-    font-size: clamp(1.75rem, 5vw, 3rem);
+.card {
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
-h2 {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-}
-
-/* ===== Tablet (768px+) ===== */
+/* ===== Planshet (768px+) ===== */
 @media (min-width: 768px) {
     .container {
         max-width: 720px;
+        margin: 0 auto;
     }
     
     .navbar {
-        flex-direction: row;
+        display: flex;
         justify-content: space-between;
         align-items: center;
+        padding: 15px 30px;
     }
     
     .nav-toggle {
-        display: none; /* Hamburger yashirish */
+        display: none; /* Hamburger yashirin */
     }
     
     .nav-links {
         display: flex;
         flex-direction: row;
         gap: 30px;
+        margin-top: 0;
     }
     
     .grid {
@@ -1294,7 +2344,7 @@ h2 {
 /* ===== Desktop (1024px+) ===== */
 @media (min-width: 1024px) {
     .container {
-        max-width: 1200px;
+        max-width: 1000px;
     }
     
     .grid {
@@ -1306,22 +2356,243 @@ h2 {
         display: grid;
         grid-template-columns: 250px 1fr;
     }
+    
+    .sidebar {
+        display: block;
+    }
 }
 
-/* ===== Large screens (1400px+) ===== */
-@media (min-width: 1400px) {
+/* ===== Large (1280px+) ===== */
+@media (min-width: 1280px) {
     .container {
-        max-width: 1320px;
+        max-width: 1200px;
     }
     
     .grid {
         grid-template-columns: repeat(4, 1fr);
     }
 }`,
+    vsCodeSteps: [
+      "index.html da <meta name='viewport'...> borligini tekshiring",
+      "Birinchi mobil uchun stillar yozing",
+      "@media (min-width: 768px) {} qo'shing",
+      "DevTools → Toggle Device Toolbar (Ctrl+Shift+M)",
+      "Turli qurilmalarni tanlang va ko'ring",
+      "Yana @media (min-width: 1024px) {} qo'shing"
+    ],
     assignment: {
       title: "To'liq responsive sahifa",
-      description: "Mobile-first yondashuvi bilan sahifa yarating: 1) Mobilda: hamburger menu, 1 ustunli kontent, 2) Tabletda (768px+): oddiy navbar, 2 ustun, 3) Desktopda (1024px+): 3 ustun + sidebar, 4) clamp() bilan responsive tipografiya, 5) Rasmlar max-width: 100%. 3 ta media query ishlatilsin.",
-      hint: "min-width ishlatib mobile-first yozing. clamp(min, ideal, max) - masalan font-size: clamp(1rem, 3vw, 2rem). Navbar uchun JavaScript hamburger toggle kerak bo'ladi."
+      description: "Mobile-first sahifa: 1) Mobilda: hamburger menu (yashirin links), 1 ustun kontent, 2) Planshet (768px+): oddiy navbar, 2 ustun grid, 3) Desktop (1024px+): 3 ustun + sidebar, 4) clamp() bilan responsive h1 va h2, 5) img { max-width: 100%; } - barcha rasmlar uchun.",
+      hint: "Mobile-first = birinchi mobil stillar, keyin @media (min-width: ...) bilan kattalar. DevTools da qurilma o'zgartiring.",
+      solution: `/* Mobile-First Responsive CSS */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    background: #f5f5f5;
+}
+
+/* Responsive Typography */
+h1 {
+    font-size: clamp(28px, 7vw, 52px);
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+h2 {
+    font-size: clamp(22px, 5vw, 36px);
+    color: #34495e;
+    margin-bottom: 12px;
+}
+
+p {
+    font-size: clamp(15px, 2vw, 18px);
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.container {
+    width: 100%;
+    padding: 0 15px;
+}
+
+/* ===== MOBIL (Default) ===== */
+
+/* Navbar */
+.navbar {
+    background: #2c3e50;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+    color: #3498db;
+}
+
+.nav-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.nav-links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #34495e;
+    flex-direction: column;
+    list-style: none;
+}
+
+.nav-links.active {
+    display: flex;
+}
+
+.nav-links li a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+/* Main Content */
+.main-content {
+    padding: 20px 15px;
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+}
+
+/* Sidebar - Mobilda yashirin */
+.sidebar {
+    display: none;
+}
+
+/* ===== PLANSHET (768px+) ===== */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+        margin: 0 auto;
+    }
+    
+    .nav-toggle {
+        display: none;
+    }
+    
+    .nav-links {
+        display: flex;
+        position: static;
+        flex-direction: row;
+        background: none;
+        gap: 25px;
+    }
+    
+    .nav-links li a {
+        padding: 10px 0;
+        border: none;
+    }
+    
+    .nav-links li a:hover {
+        color: #3498db;
+    }
+    
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .main-content {
+        padding: 30px;
+    }
+}
+
+/* ===== DESKTOP (1024px+) ===== */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 100%;
+        padding: 0;
+    }
+    
+    .page-wrapper {
+        display: grid;
+        grid-template-columns: 250px 1fr;
+    }
+    
+    .sidebar {
+        display: block;
+        background: #34495e;
+        color: white;
+        padding: 25px;
+        min-height: calc(100vh - 60px);
+    }
+    
+    .sidebar-menu {
+        list-style: none;
+    }
+    
+    .sidebar-menu li {
+        padding: 12px 15px;
+        margin-bottom: 8px;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+    
+    .sidebar-menu li:hover {
+        background: rgba(255,255,255,0.1);
+    }
+    
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ===== LARGE DESKTOP (1280px+) ===== */
+@media (min-width: 1280px) {
+    .grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 25px;
+    }
+    
+    .main-content {
+        padding: 40px;
+    }
+}`
     }
   },
   {
@@ -1331,172 +2602,214 @@ h2 {
     duration: "40 daqiqa",
     content: `## JavaScript nima?
 
-JavaScript - veb-sahifalarni interaktiv qiluvchi dasturlash tili. HTML struktura, CSS dizayn bersa, JavaScript xatti-harakatni boshqaradi.
+JavaScript - veb sahifalarni JONLI qiladigan til. HTML struktura, CSS dizayn bersa, JS harakatni beradi.
 
-JavaScript qila oladi:
-- Foydalanuvchi harakatlariga javob berish (click, input)
-- DOM ni dinamik o'zgartirish
-- Serverdan ma'lumot olish (API)
-- Animatsiyalar yaratish
-- Forma validatsiyasi
-- va yana ko'p narsa...
+JS qila oladi:
+- Tugmani bosganda nimadir qilish
+- Formani tekshirish
+- Ma'lumot olish (API)
+- Animatsiyalar
+- va boshqalar
 
-## JavaScript qo'shish
+## JS qanday qo'shiladi?
 
-### 1. Internal (HTML ichida)
+1. HTML ichida:
 <script>
     console.log("Salom!");
 </script>
 
-### 2. External (alohida fayl)
+2. Alohida fayl (yaxshiroq):
 <script src="script.js"></script>
 
-Tavsiya: script tegini </body> oldidan qo'yish yoki defer atributini ishlatish.
+## O'zgaruvchilar
 
-## O'zgaruvchilar (Variables)
+O'zgaruvchi - ma'lumot saqlaydigan "quti".
 
-O'zgaruvchilar ma'lumotlarni saqlash uchun ishlatiladi.
+### const - o'zgarmas (eng ko'p ishlating)
+const PI = 3.14;
+const name = "Ali";
 
-### let - o'zgartirish mumkin
-let yosh = 25;
-yosh = 26; // OK
+### let - o'zgaruvchan
+let age = 25;
+age = 26; // OK
 
-### const - o'zgartirish mumkin EMAS
-const PI = 3.14159;
-// PI = 3; // XATO!
+### var - eski (ishlatmang!)
 
-### var - eski usul (ishlatmang)
+## Ma'lumot turlari
 
-Qoida: Doimiy const, o'zgaradigan let ishlatilsin.
-
-## Ma'lumot turlari (Data Types)
-
-### Primitiv turlar:
-
-1. String (matn)
+### String (matn)
 let ism = "Ali";
-let gap = 'Salom dunyo';
-let shablon = \`Salom \${ism}\`; // Template literal
+let gap = 'Salom';
 
-2. Number (son)
-let butun = 42;
-let kasr = 3.14;
-let manfiy = -10;
+### Number (son)
+let yosh = 25;
+let narx = 99.99;
 
-3. Boolean (mantiqiy)
-let togri = true;
-let notogri = false;
+### Boolean (ha/yo'q)
+let active = true;
+let deleted = false;
 
-4. undefined - qiymat berilmagan
-let nomalum;
+### undefined - qiymat berilmagan
+let x; // undefined
 
-5. null - ataylab bo'sh
-let bosh = null;
+### null - ataylab bo'sh
+let y = null;
 
-6. BigInt - juda katta sonlar
-let katta = 9007199254740991n;
+## Template Literals (Shablon matn)
 
-7. Symbol - noyob identifikator
-
-### Murakkab turlar:
-- Object (obyekt)
-- Array (massiv)
-- Function (funksiya)
+Eng qulay usul:
+const name = "Ali";
+const age = 25;
+console.log(\`Salom, \${name}! Yosh: \${age}\`);
 
 ## Operatorlar
 
-### Arifmetik:
+### Arifmetik
 + - * / % **
 
-### Taqqoslash:
-== (qiymat), === (qiymat va tur)
+### Taqqoslash
+== (qiymat), === (qiymat VA tur - bu yaxshi!)
 != !==
 < > <= >=
 
-### Mantiqiy:
+### Mantiqiy
 && (VA), || (YOKI), ! (EMAS)
 
-### Qisqa yozuv:
-+= -= *= /=
-++ --
+## console.log()
 
-## typeof operatori
+Eng yaqin do'stingiz! Har narsani tekshiring:
+console.log("Ishlayapti!");
+console.log(x);`,
+    codeExample: `// ===== JavaScript asoslari =====
 
-Turning qiymatini aniqlash:
-typeof "salom" // "string"
-typeof 42 // "number"
-typeof true // "boolean"`,
-    codeExample: `// ===== O'zgaruvchilar =====
+// O'zgaruvchilar
+const SITE_NAME = "front-end.uz"; // O'zgarmas
+let userCount = 0; // O'zgaruvchan
 
-// const - o'zgarmaydi
-const SITE_NAME = "front-end.uz";
-const MAX_USERS = 100;
+// String (matn)
+const firstName = "Jasur";
+const lastName = "Karimov";
+const fullName = \`\${firstName} \${lastName}\`; // "Jasur Karimov"
+console.log(fullName);
 
-// let - o'zgaradi
-let currentUser = "Ali";
-let score = 0;
+// Number (son)
+const age = 25;
+const price = 99.99;
+const discount = 0.15; // 15%
+const finalPrice = price * (1 - discount);
+console.log(\`Chegirma narx: \${finalPrice}\`); // 84.99
 
-// String
-let firstName = "Jasur";
-let lastName = 'Karimov';
-let fullName = \`\${firstName} \${lastName}\`; // "Jasur Karimov"
+// Boolean (mantiqiy)
+const isLoggedIn = true;
+const isAdmin = false;
+const canEdit = isLoggedIn && isAdmin; // false (ikkalasi ham true emas)
+console.log(\`Tahrirlash mumkin: \${canEdit}\`);
 
-// Number
-let age = 25;
-let price = 99.99;
-let discount = 0.15; // 15%
-let finalPrice = price * (1 - discount); // 84.99
-
-// Boolean
-let isLoggedIn = true;
-let hasPermission = false;
-let isAdult = age >= 18; // true
-
-// undefined va null
-let notDefined; // undefined
-let emptyValue = null;
-
-// ===== Operatorlar =====
-
-// Arifmetik
-let sum = 10 + 5; // 15
-let diff = 10 - 5; // 5
-let product = 10 * 5; // 50
-let quotient = 10 / 5; // 2
-let remainder = 10 % 3; // 1 (qoldiq)
-let power = 2 ** 3; // 8 (daraja)
-
-// Qisqa yozuv
-let count = 0;
-count++; // count = count + 1
-count += 5; // count = count + 5
+// Arifmetik operatsiyalar
+const a = 10;
+const b = 3;
+console.log(\`Qo'shish: \${a + b}\`);  // 13
+console.log(\`Ayirish: \${a - b}\`);   // 7
+console.log(\`Ko'paytirish: \${a * b}\`); // 30
+console.log(\`Bo'lish: \${a / b}\`);   // 3.333...
+console.log(\`Qoldiq: \${a % b}\`);    // 1
+console.log(\`Daraja: \${a ** 2}\`);   // 100
 
 // Taqqoslash
-console.log(5 == "5"); // true (faqat qiymat)
-console.log(5 === "5"); // false (qiymat va tur)
+console.log(5 == "5");  // true (faqat qiymat)
+console.log(5 === "5"); // false (qiymat VA tur) - BUNI ISHLATING!
 console.log(5 !== "5"); // true
 
-// Mantiqiy
-let canVote = age >= 18 && isLoggedIn; // ikkalasi ham true bo'lsa
-let hasAccess = isAdult || hasPermission; // biri true bo'lsa
-let isBlocked = !hasPermission; // teskarisi
+// Yosh tekshirish
+const userAge = 20;
+const isAdult = userAge >= 18;
+console.log(\`Kattami: \${isAdult}\`); // true
 
-// ===== Console =====
-console.log("Oddiy xabar");
-console.warn("Ogohlantirish");
-console.error("Xatolik");
-console.table({ ism: firstName, yosh: age });
+// Shartli ifoda
+const status = isAdult ? "Katta" : "Kichik";
+console.log(status); // "Katta"
 
-// ===== typeof =====
+// typeof - turni aniqlash
 console.log(typeof firstName); // "string"
-console.log(typeof age); // "number"
+console.log(typeof age);       // "number"
 console.log(typeof isLoggedIn); // "boolean"
-console.log(typeof notDefined); // "undefined"
-console.log(typeof null); // "object" (JavaScript xatosi)`,
+console.log(typeof undefined);  // "undefined"
+console.log(typeof null);       // "object" (JS xatosi)
+
+// Qo'shimcha console usullari
+console.log("Oddiy xabar");
+console.warn("Ogohlantirish!");
+console.error("Xatolik!");
+console.table({ ism: firstName, yosh: age }); // Jadval ko'rinishida`,
+    vsCodeSteps: [
+      "Yangi fayl: script.js",
+      "index.html da: <script src='script.js'></script> (</body> oldida)",
+      "script.js da console.log('Ishlayapti!'); yozing",
+      "Brauzerda sahifani oching",
+      "F12 bosing → Console tab oching",
+      "'Ishlayapti!' ko'rinishi kerak",
+      "O'zgaruvchilar yaratib, console.log() qiling"
+    ],
     assignment: {
       title: "JavaScript asoslari amaliyot",
-      description: "JavaScript fayl yarating va quyidagilarni bajaring: 1) O'zingiz haqida 5 ta const o'zgaruvchi (ism, familiya, yosh, kasb, shahar), 2) Template literal bilan to'liq taqdimot matni, 3) Yosh asosida isAdult o'zgaruvchi (boolean), 4) 2 ta son va ularning yig'indisi, ayirmasi, ko'paytmasi, 5) typeof bilan har bir o'zgaruvchi turini console.log qiling.",
-      hint: "Template literal: `Mening ismim ${ism}`. Boolean: const isAdult = yosh >= 18. Barcha natijalarni console.log() bilan ko'ring."
+      description: "script.js yarating: 1) 5 ta const o'zgaruvchi - ism, familiya, yosh, kasb, shahar, 2) Template literal bilan taqdimot matni (\"Salom, men ... ..., yoshim ..., ...\"), 3) isAdult boolean (yosh >= 18), 4) 2 ta son va ularning yig'indisi, ayirmasi, ko'paytmasi, 5) typeof bilan har birining turini console.log qiling.",
+      hint: "Template literal: `Matn ${ozgaruvchi}`. Boolean: const isAdult = yosh >= 18;",
+      solution: `// JavaScript amaliyot - Men haqimda
+
+// 1. O'zgaruvchilar
+const ism = "Jasur";
+const familiya = "Karimov";
+const yosh = 22;
+const kasb = "Frontend Developer";
+const shahar = "Toshkent";
+
+// 2. Template literal bilan taqdimot
+const taqdimot = \`Salom! Men \${ism} \${familiya}. 
+Yoshim \${yosh} da. 
+Men \${kasb} sifatida ishlayman. 
+\${shahar} shahrida yashayman.\`;
+
+console.log("=== TAQDIMOT ===");
+console.log(taqdimot);
+
+// 3. Boolean - katta yoshdami?
+const isAdult = yosh >= 18;
+console.log(\`\\nKatta yoshdami: \${isAdult}\`); // true
+
+// 4. Arifmetik amallar
+const son1 = 15;
+const son2 = 4;
+
+const yigindi = son1 + son2;
+const ayirma = son1 - son2;
+const kopaytma = son1 * son2;
+const bolinma = son1 / son2;
+const qoldiq = son1 % son2;
+
+console.log("\\n=== ARIFMETIK AMALLAR ===");
+console.log(\`\${son1} + \${son2} = \${yigindi}\`);   // 19
+console.log(\`\${son1} - \${son2} = \${ayirma}\`);    // 11
+console.log(\`\${son1} * \${son2} = \${kopaytma}\`);  // 60
+console.log(\`\${son1} / \${son2} = \${bolinma}\`);   // 3.75
+console.log(\`\${son1} % \${son2} = \${qoldiq}\`);    // 3
+
+// 5. typeof - turlarni tekshirish
+console.log("\\n=== TURLAR (typeof) ===");
+console.log(\`ism turi: \${typeof ism}\`);           // string
+console.log(\`yosh turi: \${typeof yosh}\`);         // number
+console.log(\`isAdult turi: \${typeof isAdult}\`);   // boolean
+console.log(\`undefined turi: \${typeof undefined}\`); // undefined
+
+// Bonus: console.table
+console.log("\\n=== JADVAL KO'RINISHIDA ===");
+console.table({
+    ism: ism,
+    familiya: familiya,
+    yosh: yosh,
+    kasb: kasb,
+    shahar: shahar,
+    "katta yoshda": isAdult
+});`
     }
   },
   {
@@ -1504,179 +2817,239 @@ console.log(typeof null); // "object" (JavaScript xatosi)`,
     title: "JavaScript funksiyalar va massivlar",
     description: "Funksiya yaratish, massivlar bilan ishlash",
     duration: "45 daqiqa",
-    content: `## Funksiyalar
+    content: `## Funksiya nima?
 
-Funksiya - qayta ishlatiladigan kod bloki. DRY (Don't Repeat Yourself) tamoyilining asosi.
+Funksiya - qayta ishlatiladigan kod bloki. Bir marta yozasiz, ko'p marta chaqirasiz.
 
-### Funksiya e'lon qilish (Declaration)
+## Funksiya yaratish
 
-function functionName(parameters) {
-    // kod
-    return result;
+### Oddiy usul
+function spiqdash(ism) {
+    return \`Salom, \${ism}!\`;
 }
 
-### Funksiya ifodasi (Expression)
-
-const myFunc = function(params) {
-    return result;
+### Arrow function (zamonaviy)
+const spiqdash = (ism) => {
+    return \`Salom, \${ism}!\`;
 };
 
-### Arrow Function (ES6)
+// Qisqa yozuv (1 qator)
+const spiqdash = (ism) => \`Salom, \${ism}!\`;
 
-const myFunc = (params) => {
-    return result;
-};
+## Funksiyani chaqirish
 
-// Qisqa yozuv (1 ta ifoda)
-const double = (x) => x * 2;
-const add = (a, b) => a + b;
+const natija = spiqdash("Ali");
+console.log(natija); // "Salom, Ali!"
 
-### Parametrlar
+## Massiv nima?
 
-- Default qiymat: function greet(name = "Mehmon")
-- Rest parametr: function sum(...numbers)
+Massiv - ro'yxat. Bir nechta qiymatni bitta o'zgaruvchida saqlash.
 
-### Return
+const mevalar = ["olma", "banan", "uzum"];
 
-Funksiya return bilan qiymat qaytaradi. Return dan keyin kod ishlamaydi.
+## Massiv bilan ishlash
 
-## Massivlar (Arrays)
+### Murojaat (0 dan boshlanadi!)
+mevalar[0] // "olma"
+mevalar[1] // "banan"
 
-Massiv - tartiblangan ma'lumotlar to'plami.
+### Uzunlik
+mevalar.length // 3
 
-### Yaratish
-const arr = [1, 2, 3, 4, 5];
-const mixed = [1, "ikki", true, null];
-const empty = [];
+### Qo'shish/o'chirish
+mevalar.push("anor"); // oxiriga
+mevalar.pop(); // oxiridan o'chirish
+mevalar.unshift("nok"); // boshiga
+mevalar.shift(); // boshidan o'chirish
 
-### Murojaat
-arr[0] // 1 (birinchi element)
-arr[arr.length - 1] // oxirgi element
+## Massiv metodlari (eng muhim!)
 
-### Asosiy metodlar
+### forEach - har biri uchun
+mevalar.forEach(meva => {
+    console.log(meva);
+});
 
-Qo'shish/O'chirish:
-- push() - oxiriga qo'shish
-- pop() - oxiridan o'chirish
-- unshift() - boshiga qo'shish
-- shift() - boshidan o'chirish
-- splice() - istalgan joydan
+### map - yangi massiv
+const KATTA = mevalar.map(m => m.toUpperCase());
 
-Qidirish:
-- indexOf() - indeksni topish
-- includes() - mavjudligini tekshirish
-- find() - shartga mos elementni topish
-- findIndex() - indeksini topish
+### filter - filtrlash
+const uzunlar = mevalar.filter(m => m.length > 4);
 
-Aylanish:
-- forEach() - har bir element uchun
-- map() - yangi massiv yaratish
-- filter() - filtrlash
-- reduce() - bitta qiymatga kamaytirish
+### find - birinchi mos
+const topildi = mevalar.find(m => m === "banan");
 
-Boshqa:
-- sort() - tartiblash
-- reverse() - teskari
-- join() - stringga aylantirish
-- slice() - qismini olish
-- concat() - birlashtirish
+### reduce - yig'indi/jamla
+const sonlar = [1, 2, 3, 4, 5];
+const yigindi = sonlar.reduce((jami, son) => jami + son, 0);
 
 ## Spread operatori (...)
 
-Massivni "yoyish":
 const arr1 = [1, 2, 3];
-const arr2 = [...arr1, 4, 5]; // [1, 2, 3, 4, 5]
-
-## Destructuring
-
-const [first, second] = [1, 2];
-const [a, , c] = [1, 2, 3]; // a=1, c=3`,
+const arr2 = [...arr1, 4, 5]; // [1, 2, 3, 4, 5]`,
     codeExample: `// ===== Funksiyalar =====
 
 // Oddiy funksiya
-function greet(name) {
-    return \`Salom, \${name}!\`;
+function spiqdash(ism) {
+    return \`Salom, \${ism}!\`;
 }
-console.log(greet("Ali")); // "Salom, Ali!"
+console.log(spiqdash("Ali")); // "Salom, Ali!"
 
 // Default parametr
-function sayHello(name = "Mehmon") {
-    return \`Xush kelibsiz, \${name}!\`;
+function greet(ism = "Mehmon") {
+    return \`Xush kelibsiz, \${ism}!\`;
 }
-console.log(sayHello()); // "Xush kelibsiz, Mehmon!"
+console.log(greet()); // "Xush kelibsiz, Mehmon!"
+console.log(greet("Jasur")); // "Xush kelibsiz, Jasur!"
 
 // Arrow function
-const multiply = (a, b) => a * b;
-console.log(multiply(5, 3)); // 15
-
-// Rest parametr
-const sum = (...numbers) => {
-    return numbers.reduce((total, num) => total + num, 0);
-};
-console.log(sum(1, 2, 3, 4, 5)); // 15
+const kopaytirish = (a, b) => a * b;
+console.log(kopaytirish(5, 3)); // 15
 
 // ===== Massivlar =====
 
-const fruits = ["olma", "banan", "uzum", "anor"];
+const mevalar = ["olma", "banan", "uzum", "anor"];
 
-// Asosiy operatsiyalar
-console.log(fruits[0]); // "olma"
-console.log(fruits.length); // 4
+// Murojaat
+console.log(mevalar[0]); // "olma"
+console.log(mevalar[mevalar.length - 1]); // "anor" (oxirgi)
 
-fruits.push("gilos"); // oxiriga qo'shish
-fruits.pop(); // oxiridan o'chirish
-fruits.unshift("nok"); // boshiga qo'shish
+// Qo'shish/o'chirish
+mevalar.push("gilos"); // oxiriga
+console.log(mevalar); // [..., "gilos"]
 
-// Qidirish
-console.log(fruits.includes("banan")); // true
-console.log(fruits.indexOf("uzum")); // 2
-
-// ===== Massiv metodlari =====
-
-const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-
-// forEach - har biri uchun
-numbers.forEach((num, index) => {
-    console.log(\`\${index}: \${num}\`);
+// ===== forEach =====
+console.log("\\n--- forEach ---");
+mevalar.forEach((meva, index) => {
+    console.log(\`\${index + 1}. \${meva}\`);
 });
 
-// map - yangi massiv
-const doubled = numbers.map(num => num * 2);
-console.log(doubled); // [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
+// ===== map =====
+console.log("\\n--- map ---");
+const kattaHarf = mevalar.map(meva => meva.toUpperCase());
+console.log(kattaHarf); // ["OLMA", "BANAN", ...]
 
-// filter - filtrlash
-const evens = numbers.filter(num => num % 2 === 0);
-console.log(evens); // [2, 4, 6, 8, 10]
+// ===== filter =====
+console.log("\\n--- filter ---");
+const uzunMevalar = mevalar.filter(meva => meva.length > 4);
+console.log(uzunMevalar); // ["banan", "gilos"]
 
-// find - birinchi mos
-const firstBig = numbers.find(num => num > 5);
-console.log(firstBig); // 6
+// ===== find =====
+console.log("\\n--- find ---");
+const banan = mevalar.find(meva => meva === "banan");
+console.log(banan); // "banan"
 
-// reduce - yig'indi
-const total = numbers.reduce((acc, num) => acc + num, 0);
-console.log(total); // 55
+// ===== reduce =====
+console.log("\\n--- reduce ---");
+const sonlar = [10, 20, 30, 40, 50];
+const yigindi = sonlar.reduce((jami, son) => jami + son, 0);
+console.log(\`Yig'indi: \${yigindi}\`); // 150
 
-// sort - tartiblash
-const words = ["banan", "olma", "anor"];
-words.sort(); // ["anor", "banan", "olma"]
+const ortacha = yigindi / sonlar.length;
+console.log(\`O'rtacha: \${ortacha}\`); // 30
 
-// Raqamlarni tartiblash
-numbers.sort((a, b) => a - b); // o'sish
-numbers.sort((a, b) => b - a); // kamayish
+// ===== Amaliy misol: Talabalar =====
+console.log("\\n--- Talabalar ---");
 
-// ===== Spread va Destructuring =====
+const talabalar = [
+    { ism: "Ali", yosh: 20, ball: 85 },
+    { ism: "Malika", yosh: 19, ball: 92 },
+    { ism: "Jasur", yosh: 21, ball: 78 },
+    { ism: "Nilufar", yosh: 20, ball: 95 }
+];
 
-const arr1 = [1, 2, 3];
-const arr2 = [4, 5, 6];
-const combined = [...arr1, ...arr2]; // [1,2,3,4,5,6]
+// Eng yuqori ball
+const maksimal = Math.max(...talabalar.map(t => t.ball));
+console.log(\`Eng yuqori ball: \${maksimal}\`);
 
-const [first, second, ...rest] = combined;
-console.log(first); // 1
-console.log(rest); // [3, 4, 5, 6]`,
+// A'lochi talabalar (90+)
+const allochilar = talabalar.filter(t => t.ball >= 90);
+console.log("A'lochilar:", allochilar.map(t => t.ism));
+
+// O'rtacha yosh
+const yoshYigindi = talabalar.reduce((sum, t) => sum + t.yosh, 0);
+const ortachaYosh = yoshYigindi / talabalar.length;
+console.log(\`O'rtacha yosh: \${ortachaYosh}\`);`,
+    vsCodeSteps: [
+      "script.js ni oching",
+      "Oddiy funksiya yarating va chaqiring",
+      "Arrow function sinab ko'ring",
+      "Massiv yarating: const mevalar = [...]",
+      "forEach bilan har birini chiqaring",
+      "map bilan yangi massiv yarating",
+      "filter va reduce ni sinang"
+    ],
     assignment: {
       title: "Funksiyalar va massivlar amaliyot",
-      description: "Quyidagilarni yarating: 1) calculateAverage funksiyasi - sonlar massivi olib o'rtachasini qaytaradi, 2) filterByLength funksiyasi - so'zlar massivi va uzunlik olib, shu uzunlikdagi so'zlarni qaytaradi, 3) Talabalar massivi (ism, yosh, ball) va ularning: a) eng yuqori ball, b) o'rtacha yosh, c) 18 dan kattalar ro'yxati. Arrow function va massiv metodlari ishlatilsin.",
-      hint: "O'rtacha: reduce bilan yig'ib, length ga bo'ling. filterByLength: filter(word => word.length === len). Eng yuqori: Math.max(...balls) yoki reduce."
+      description: "Quyidagilarni yarating: 1) ortacha funksiyasi - sonlar massivi olib o'rtacha qaytaradi, 2) filterByLength - so'zlar massivi va uzunlik, shu uzunlikdagi so'zlarni qaytaradi, 3) Talabalar massivi [{ism, yosh, ball}] va: a) eng yuqori ball, b) o'rtacha yosh, c) ball > 80 ro'yxat. Faqat arrow function va massiv metodlari!",
+      hint: "O'rtacha = reduce yig'indi / length. filter(x => x.length === n). Math.max(...massiv).",
+      solution: `// Funksiyalar va massivlar amaliyot
+
+// 1. O'rtacha hisoblash funksiyasi
+const ortacha = (sonlar) => {
+    if (sonlar.length === 0) return 0;
+    const yigindi = sonlar.reduce((sum, son) => sum + son, 0);
+    return yigindi / sonlar.length;
+};
+
+// Test
+console.log("=== O'RTACHA ===");
+console.log(ortacha([10, 20, 30, 40, 50])); // 30
+console.log(ortacha([5, 15, 25])); // 15
+
+// 2. Uzunlik bo'yicha filtrlash
+const filterByLength = (sozlar, uzunlik) => {
+    return sozlar.filter(soz => soz.length === uzunlik);
+};
+
+// Test
+console.log("\\n=== FILTER BY LENGTH ===");
+const sozlar = ["olma", "banan", "uzum", "anor", "gilos"];
+console.log(\`5 harfli: \${filterByLength(sozlar, 5)}\`); // ["olma", "banan", "gilos"]
+console.log(\`4 harfli: \${filterByLength(sozlar, 4)}\`); // ["uzum", "anor"]
+
+// 3. Talabalar massivi
+console.log("\\n=== TALABALAR ===");
+
+const talabalar = [
+    { ism: "Ali", yosh: 20, ball: 85 },
+    { ism: "Malika", yosh: 19, ball: 92 },
+    { ism: "Jasur", yosh: 21, ball: 78 },
+    { ism: "Nilufar", yosh: 20, ball: 95 },
+    { ism: "Sardor", yosh: 22, ball: 88 }
+];
+
+// a) Eng yuqori ball
+const ballar = talabalar.map(t => t.ball);
+const engYuqori = Math.max(...ballar);
+const engYaxshi = talabalar.find(t => t.ball === engYuqori);
+console.log(\`Eng yuqori ball: \${engYuqori} (\${engYaxshi.ism})\`);
+
+// b) O'rtacha yosh
+const ortachaYosh = ortacha(talabalar.map(t => t.yosh));
+console.log(\`O'rtacha yosh: \${ortachaYosh.toFixed(1)}\`);
+
+// c) Ball > 80 bo'lganlar
+const yaxshilar = talabalar.filter(t => t.ball > 80);
+console.log("Ball > 80:");
+yaxshilar.forEach(t => {
+    console.log(\`  - \${t.ism}: \${t.ball}\`);
+});
+
+// Bonus: Jadval ko'rinishida
+console.log("\\n=== JADVAL ===");
+console.table(talabalar);
+
+// Bonus: Statistika
+console.log("\\n=== STATISTIKA ===");
+const statistika = {
+    "Jami talabalar": talabalar.length,
+    "O'rtacha ball": ortacha(ballar).toFixed(1),
+    "O'rtacha yosh": ortachaYosh.toFixed(1),
+    "Eng yuqori": engYuqori,
+    "Eng past": Math.min(...ballar),
+    "80+ ball": yaxshilar.length
+};
+console.table(statistika);`
     }
   },
   {
@@ -1686,140 +3059,96 @@ console.log(rest); // [3, 4, 5, 6]`,
     duration: "45 daqiqa",
     content: `## DOM nima?
 
-DOM (Document Object Model) - HTML hujjatning JavaScript uchun ko'rinishi. Brauzer HTML ni o'qib, daraxt strukturasidagi obyektlar to'plamini yaratadi. JavaScript bu obyektlarni o'zgartirishi mumkin.
+DOM (Document Object Model) - JavaScript HTML ni ko'rish usuli. HTML faylni daraxt shaklida ko'rsatadi va JS uni o'zgartira oladi.
 
-document obyekti - butun sahifa
-document.documentElement - <html>
-document.body - <body>
-document.head - <head>
-
-## Elementlarni tanlash
+## Elementlarni topish
 
 ### ID bo'yicha (eng tez)
-const element = document.getElementById("myId");
+const element = document.getElementById("header");
 
-### Class bo'yicha
-const elements = document.getElementsByClassName("myClass");
-// HTMLCollection qaytaradi
+### Query selector (eng qulay)
+const element = document.querySelector(".card"); // birinchisi
+const elements = document.querySelectorAll(".card"); // hammasi
 
-### Tag bo'yicha
-const paragraphs = document.getElementsByTagName("p");
+## Element kontentini o'zgartirish
 
-### CSS selektor bo'yicha (zamonaviy)
-const one = document.querySelector(".card"); // birinchisi
-const all = document.querySelectorAll(".card"); // hammasi
-// NodeList qaytaradi
+### Matn
+element.textContent = "Yangi matn";
 
-## Element xususiyatlari
+### HTML
+element.innerHTML = "<strong>Qalin</strong> matn";
 
-### Kontent
-element.innerHTML - HTML kontent
-element.textContent - faqat matn
-element.innerText - ko'rinadigan matn
+## Atributlar
 
-### Atributlar
-element.getAttribute("href")
-element.setAttribute("href", "https://...")
-element.removeAttribute("disabled")
-element.hasAttribute("checked")
+element.setAttribute("href", "https://...");
+element.getAttribute("src");
+element.removeAttribute("disabled");
 
-// data-* atributlar
-element.dataset.userId // data-user-id
+## Class bilan ishlash
 
-### Class bilan ishlash
-element.classList.add("active")
-element.classList.remove("hidden")
-element.classList.toggle("open")
-element.classList.contains("selected")
-element.classList.replace("old", "new")
+element.classList.add("active");
+element.classList.remove("hidden");
+element.classList.toggle("open"); // bor-yo'q
+element.classList.contains("active"); // tekshirish
 
-### Stil
-element.style.color = "red"
-element.style.backgroundColor = "blue"
-element.style.display = "none"
+## Stil o'zgartirish
 
-// Computed style (haqiqiy)
-getComputedStyle(element).fontSize
+element.style.color = "red";
+element.style.backgroundColor = "blue";
+element.style.display = "none";
 
-## Element yaratish va qo'shish
+## Element yaratish
 
-### Yaratish
-const div = document.createElement("div");
-div.textContent = "Yangi element";
-div.className = "card";
+const yangi = document.createElement("div");
+yangi.textContent = "Yangi element";
+yangi.className = "card";
 
-### Qo'shish
-parent.appendChild(child) // oxiriga
-parent.insertBefore(new, reference) // oldiga
-parent.prepend(child) // boshiga
-parent.append(child1, child2) // oxiriga (bir nechta)
+## Element qo'shish
 
-### insertAdjacentHTML
-element.insertAdjacentHTML("beforebegin", html) // oldidan
-element.insertAdjacentHTML("afterbegin", html) // ichida boshida
-element.insertAdjacentHTML("beforeend", html) // ichida oxirida
-element.insertAdjacentHTML("afterend", html) // keyinida
+parent.appendChild(yangi); // oxiriga
+parent.prepend(yangi); // boshiga
+parent.insertBefore(yangi, reference);
 
-### O'chirish
-element.remove()
-parent.removeChild(child)
+## Element o'chirish
+
+element.remove();
 
 ## Navigatsiya
 
 element.parentElement - ota
 element.children - bolalar
-element.firstElementChild - birinchi bola
-element.lastElementChild - oxirgi bola
-element.nextElementSibling - keyingi qo'shni
-element.previousElementSibling - oldingi qo'shni`,
-    codeExample: `// ===== Elementlarni tanlash =====
+element.firstElementChild
+element.lastElementChild
+element.nextElementSibling
+element.previousElementSibling`,
+    codeExample: `// ===== DOM bilan ishlash =====
 
-// ID bo'yicha
+// Elementlarni topish
 const header = document.getElementById("header");
-
-// Query selector
 const firstCard = document.querySelector(".card");
 const allCards = document.querySelectorAll(".card");
-const submitBtn = document.querySelector("button[type='submit']");
 
-// ===== Kontent o'zgartirish =====
-
-// Matn
+// Matn o'zgartirish
 header.textContent = "Yangi sarlavha";
 
-// HTML
+// HTML o'zgartirish
 const container = document.querySelector(".container");
-container.innerHTML = "<h2>Yangi kontent</h2><p>Paragraf</p>";
+container.innerHTML = \`
+    <h2>Dinamik kontent</h2>
+    <p>JavaScript orqali qo'shildi</p>
+\`;
 
-// ===== Atributlar =====
-
-const link = document.querySelector("a");
-link.setAttribute("href", "https://google.com");
-link.setAttribute("target", "_blank");
-
-const img = document.querySelector("img");
-console.log(img.getAttribute("src"));
-img.alt = "Yangi tavsif";
-
-// data-* atributlar
-const card = document.querySelector(".card");
-console.log(card.dataset.productId); // data-product-id
-card.dataset.category = "electronics";
-
-// ===== Class bilan ishlash =====
-
+// Class bilan ishlash
 const button = document.querySelector(".btn");
-
-button.classList.add("active", "primary");
+button.classList.add("active");
 button.classList.remove("disabled");
-button.classList.toggle("loading"); // bor-yo'q
 
-if (button.classList.contains("active")) {
-    console.log("Tugma faol");
-}
+// Toggle - bor-yo'q
+button.addEventListener("click", () => {
+    button.classList.toggle("loading");
+});
 
-// ===== Stil o'zgartirish =====
-
+// Stil o'zgartirish
 const box = document.querySelector(".box");
 box.style.width = "200px";
 box.style.height = "200px";
@@ -1827,246 +3156,529 @@ box.style.backgroundColor = "#3498db";
 box.style.borderRadius = "10px";
 box.style.transition = "all 0.3s ease";
 
-// ===== Element yaratish =====
-
-// Yangi kartochka
+// Yangi element yaratish
 const newCard = document.createElement("div");
 newCard.className = "card";
 newCard.innerHTML = \`
-    <h3>Yangi mahsulot</h3>
-    <p>Mahsulot tavsifi</p>
-    <button class="btn">Sotib olish</button>
+    <h3>Yangi kartochka</h3>
+    <p>JavaScript bilan yaratildi</p>
+    <button class="btn">Ko'proq</button>
 \`;
 
 // Qo'shish
-container.appendChild(newCard);
+const cardsContainer = document.querySelector(".cards");
+cardsContainer.appendChild(newCard);
 
-// insertAdjacentHTML bilan
+// Bir nechta element yaratish
+const mahsulotlar = [
+    { nom: "Telefon", narx: 500 },
+    { nom: "Laptop", narx: 1200 },
+    { nom: "Quloqchin", narx: 100 }
+];
+
+mahsulotlar.forEach(mahsulot => {
+    const card = document.createElement("div");
+    card.className = "product-card";
+    card.innerHTML = \`
+        <h3>\${mahsulot.nom}</h3>
+        <p class="price">$\${mahsulot.narx}</p>
+        <button class="btn-buy">Sotib olish</button>
+    \`;
+    cardsContainer.appendChild(card);
+});
+
+// insertAdjacentHTML - qayerga qo'yishni tanlash
 container.insertAdjacentHTML("beforeend", \`
-    <div class="card">
-        <h3>Yana bir mahsulot</h3>
+    <div class="footer-note">
+        Oxirga qo'shildi
     </div>
 \`);
 
-// ===== O'chirish =====
+// O'chirish
+const oldElement = document.querySelector(".old");
+if (oldElement) {
+    oldElement.remove();
+}
 
-const oldCard = document.querySelector(".old-card");
-oldCard.remove();
-
-// ===== Navigatsiya =====
-
-const list = document.querySelector("ul");
-const firstItem = list.firstElementChild;
-const lastItem = list.lastElementChild;
-const secondItem = firstItem.nextElementSibling;
-const parent = list.parentElement;`,
+// querySelectorAll bilan ishlash
+allCards.forEach((card, index) => {
+    card.style.animationDelay = \`\${index * 0.1}s\`;
+});`,
+    vsCodeSteps: [
+      "index.html da elementlar yarating (id va class bilan)",
+      "script.js da document.querySelector() ishlating",
+      "Brauzer Console (F12) da element.textContent o'zgartiring",
+      "classList.add/remove/toggle sinang",
+      "createElement() bilan yangi element yarating",
+      "appendChild() bilan sahifaga qo'shing",
+      "DevTools → Elements da o'zgarishlarni ko'ring"
+    ],
     assignment: {
-      title: "DOM manipulyatsiya",
-      description: "Interaktiv todo ro'yxat yarating (faqat DOM, hali event yo'q): 1) HTML da input va tugma, bo'sh ul ro'yxat, 2) JavaScript bilan 3 ta vazifa elementi yarating va ro'yxatga qo'shing, 3) Har bir vazifada: matn, 'Bajarildi' tugmasi, 'O'chirish' tugmasi, 4) classList bilan completed class qo'shish/olish imkoniyati. createElement va appendChild ishlatilsin.",
-      hint: "const li = document.createElement('li'); li.innerHTML = `<span>${text}</span><button>...</button>`; ul.appendChild(li); Tugmalar keyingi darsda ishlaydi."
+      title: "DOM bilan todo ro'yxati yaratish",
+      description: "Oddiy todo ro'yxat yarating: 1) Input va 'Qo'shish' tugmasi HTML da, 2) JS bilan: tugma bosilganda input qiymatini oling, 3) Yangi <li> element yarating va ro'yxatga qo'shing, 4) Har bir li da 'O'chirish' tugmasi, 5) O'chirish bosilganda li.remove(). classList.toggle('completed') ham qo'shing.",
+      hint: "input.value - inputdagi matn. createElement('li'). classList.toggle() - bajarilgan/bajarilmagan.",
+      solution: `<!-- index.html -->
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo Ro'yxat</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #f5f5f5;
+            padding: 40px;
+        }
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+        .add-form {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+        }
+        #todoInput {
+            flex: 1;
+            padding: 12px 15px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+        #todoInput:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+        #addBtn {
+            padding: 12px 25px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #addBtn:hover {
+            background: #2980b9;
+        }
+        #todoList {
+            list-style: none;
+        }
+        .todo-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f9f9f9;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            transition: all 0.3s;
+        }
+        .todo-item.completed {
+            background: #d4edda;
+        }
+        .todo-item.completed .todo-text {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .todo-text {
+            flex: 1;
+            cursor: pointer;
+        }
+        .delete-btn {
+            padding: 5px 12px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .delete-btn:hover {
+            background: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 Vazifalar</h1>
+        
+        <div class="add-form">
+            <input type="text" id="todoInput" placeholder="Yangi vazifa...">
+            <button id="addBtn">Qo'shish</button>
+        </div>
+        
+        <ul id="todoList"></ul>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
+
+// ===== script.js =====
+
+// Elementlarni topish
+const todoInput = document.getElementById("todoInput");
+const addBtn = document.getElementById("addBtn");
+const todoList = document.getElementById("todoList");
+
+// Vazifa qo'shish funksiyasi
+const addTodo = () => {
+    const text = todoInput.value.trim();
+    
+    // Bo'sh bo'lsa qo'shmaymiz
+    if (text === "") {
+        todoInput.style.borderColor = "#e74c3c";
+        return;
+    }
+    
+    todoInput.style.borderColor = "#ddd";
+    
+    // Yangi li yaratish
+    const li = document.createElement("li");
+    li.className = "todo-item";
+    li.innerHTML = \`
+        <span class="todo-text">\${text}</span>
+        <button class="delete-btn">O'chirish</button>
+    \`;
+    
+    // Ro'yxatga qo'shish
+    todoList.appendChild(li);
+    
+    // Inputni tozalash
+    todoInput.value = "";
+    todoInput.focus();
+};
+
+// Qo'shish tugmasi
+addBtn.addEventListener("click", addTodo);
+
+// Enter tugmasi bilan ham qo'shish
+todoInput.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") {
+        addTodo();
+    }
+});
+
+// Event delegation - tugmalar uchun
+todoList.addEventListener("click", (e) => {
+    const li = e.target.closest(".todo-item");
+    
+    // O'chirish
+    if (e.target.classList.contains("delete-btn")) {
+        li.style.animation = "fadeOut 0.3s ease";
+        setTimeout(() => li.remove(), 300);
+    }
+    
+    // Bajarilgan deb belgilash
+    if (e.target.classList.contains("todo-text")) {
+        li.classList.toggle("completed");
+    }
+});`
     }
   },
   {
     id: 13,
     title: "JavaScript hodisalar (Events)",
-    description: "Click, input va boshqa hodisalarni boshqarish",
-    duration: "45 daqiqa",
-    content: `## Hodisalar nima?
+    description: "Click, input, submit va boshqa hodisalar bilan ishlash",
+    duration: "40 daqiqa",
+    content: `## Hodisa (Event) nima?
 
-Hodisalar (Events) - brauzerda sodir bo'ladigan voqealar: sichqoncha bosish, klaviatura bosish, forma yuborish, sahifa yuklash va h.k. JavaScript bu hodisalarga "quloq soladi" va javob beradi.
-
-## Hodisa turlari
-
-### Sichqoncha hodisalari:
+Hodisa - foydalanuvchi harakati. Masalan:
 - click - bosish
-- dblclick - ikki marta bosish
-- mousedown/mouseup - bosish/qo'yish
-- mouseover/mouseout - ustiga/tashqarisiga
-- mousemove - harakatlanish
-- contextmenu - o'ng tugma
-
-### Klaviatura:
-- keydown - tugma bosildi
-- keyup - tugma qo'yildi
-- keypress - belgi kiritildi (deprecated)
-
-### Forma:
-- submit - forma yuborildi
-- change - qiymat o'zgardi (blur da)
-- input - har bir kiritishda
-- focus - fokus oldi
-- blur - fokusdan chiqdi
-
-### Hujjat/Oyna:
-- DOMContentLoaded - HTML yuklandi
-- load - hammasi yuklandi
-- resize - o'lcham o'zgardi
-- scroll - scroll qilindi
+- input - yozish
+- submit - forma yuborish
+- keydown - tugma bosish
 
 ## Event Listener qo'shish
 
-### addEventListener (tavsiya etiladi)
-element.addEventListener("event", handler);
-element.addEventListener("click", function() {
+element.addEventListener("eventType", function);
+
+Misol:
+button.addEventListener("click", () => {
     console.log("Bosildi!");
 });
 
-### on... xususiyati (eski usul)
-element.onclick = function() {};
+## Eng muhim hodisalar
 
-### HTML atributi (yaxshi emas)
-<button onclick="handleClick()">
+### Sichqoncha
+- click - bosish
+- dblclick - ikki marta bosish
+- mouseenter - ustiga kelish
+- mouseleave - ustidan ketish
+
+### Klaviatura
+- keydown - tugma bosildi
+- keyup - tugma qo'yib yuborildi
+
+### Forma
+- submit - yuborish
+- input - har bir o'zgarish
+- change - o'zgarib bo'lgach (focus yo'qolganda)
+- focus - fokusga kirdi
+- blur - fokusdan chiqdi
 
 ## Event obyekti
 
-Handler funksiyaga event obyekti avtomatik uzatiladi:
+Handler funksiyaga event obyekti keladi:
 
-element.addEventListener("click", function(event) {
+button.addEventListener("click", (event) => {
     event.target // bosilgan element
-    event.currentTarget // listener bog'langan element
-    event.type // hodisa turi
     event.preventDefault() // standart harakatni to'xtatish
-    event.stopPropagation() // tarqalishni to'xtatish
 });
 
-### Klaviatura event:
+### Klaviatura uchun
 event.key // "Enter", "a", "Escape"
-event.code // "KeyA", "Enter"
-event.ctrlKey, event.shiftKey, event.altKey
+event.ctrlKey // Ctrl bosilganmi?
 
-### Sichqoncha event:
-event.clientX, event.clientY // koordinatalar
-event.button // qaysi tugma
-
-## Event Bubbling va Capturing
-
-Hodisa ichki elementdan tashqariga "ko'pirib" chiqadi (bubbling).
-
-<div> <- 3-chi
-    <ul> <- 2-chi
-        <li> <- 1-chi (bosish)
-
-### Bubbling to'xtatish
-event.stopPropagation()
-
-### Capturing (teskari)
-element.addEventListener("click", handler, true);
+### Forma uchun
+event.preventDefault() // sahifa yangilanishini to'xtatish
 
 ## Event Delegation
 
-Ko'p elementga emas, ota elementga bitta listener qo'yish:
+Ko'p elementga emas, ota elementga bitta listener:
 
-ul.addEventListener("click", function(e) {
+ul.addEventListener("click", (e) => {
     if (e.target.tagName === "LI") {
         // li bosildi
     }
-});`,
-    codeExample: `// ===== Oddiy click =====
+});
 
+Bu yangi qo'shilgan elementlar uchun ham ishlaydi!`,
+    codeExample: `// ===== Event Handlers =====
+
+// Click
 const button = document.querySelector("#myButton");
-
-button.addEventListener("click", function() {
+button.addEventListener("click", () => {
     console.log("Tugma bosildi!");
 });
 
-// Arrow function bilan
-button.addEventListener("click", () => {
-    alert("Salom!");
-});
-
-// ===== Event obyekti =====
-
+// Event obyekti
 button.addEventListener("click", (event) => {
     console.log("Bosilgan element:", event.target);
-    console.log("Hodisa turi:", event.type);
-    console.log("Koordinatalar:", event.clientX, event.clientY);
+    console.log("X koordinata:", event.clientX);
 });
 
 // ===== Input hodisasi =====
-
 const searchInput = document.querySelector("#search");
-const resultsDiv = document.querySelector("#results");
 
+// Har bir harf bosilganda
 searchInput.addEventListener("input", (e) => {
-    const searchTerm = e.target.value;
-    console.log("Qidirilmoqda:", searchTerm);
+    const query = e.target.value;
+    console.log("Qidirilmoqda:", query);
     
-    // Real-time qidiruv
-    resultsDiv.innerHTML = \`Natijalar: \${searchTerm}\`;
+    // Real-time qidiruv qilish mumkin
 });
 
 // ===== Forma submit =====
-
 const form = document.querySelector("#loginForm");
 
 form.addEventListener("submit", (e) => {
-    e.preventDefault(); // Sahifa yangilanishini to'xtatish
+    e.preventDefault(); // Sahifa yangilanishini TO'XTATISH!
     
-    const email = form.querySelector("#email").value;
-    const password = form.querySelector("#password").value;
-    
-    console.log("Login:", { email, password });
+    const email = document.querySelector("#email").value;
+    const password = document.querySelector("#password").value;
     
     // Validatsiya
-    if (email && password.length >= 6) {
-        console.log("Forma to'g'ri");
-    } else {
-        console.log("Xatolik");
+    if (email === "" || password === "") {
+        alert("Barcha maydonlarni to'ldiring!");
+        return;
     }
+    
+    console.log("Login:", { email, password });
+    // API ga yuborish...
 });
 
 // ===== Klaviatura =====
-
 document.addEventListener("keydown", (e) => {
     console.log("Bosilgan tugma:", e.key);
     
+    // Escape - modal yopish
     if (e.key === "Escape") {
-        // Modal yopish
-        console.log("Escape bosildi");
+        closeModal();
     }
     
+    // Ctrl + S - saqlash
     if (e.ctrlKey && e.key === "s") {
         e.preventDefault();
-        console.log("Ctrl+S bosildi");
+        saveDocument();
     }
 });
 
 // ===== Event Delegation =====
-
 const todoList = document.querySelector("#todoList");
 
-// Har bir li ga emas, ul ga bitta listener
+// Bitta listener - barcha li lar uchun
 todoList.addEventListener("click", (e) => {
-    // Delete tugmasi bosildi
-    if (e.target.classList.contains("delete-btn")) {
-        const li = e.target.closest("li");
+    const target = e.target;
+    const li = target.closest("li");
+    
+    if (!li) return;
+    
+    // Delete tugmasi
+    if (target.classList.contains("delete-btn")) {
         li.remove();
     }
     
     // Complete tugmasi
-    if (e.target.classList.contains("complete-btn")) {
-        const li = e.target.closest("li");
+    if (target.classList.contains("complete-btn")) {
         li.classList.toggle("completed");
     }
 });
 
 // ===== Hover effekti =====
-
 const card = document.querySelector(".card");
 
 card.addEventListener("mouseenter", () => {
     card.style.transform = "scale(1.05)";
-    card.style.boxShadow = "0 10px 20px rgba(0,0,0,0.2)";
+    card.style.boxShadow = "0 10px 30px rgba(0,0,0,0.2)";
 });
 
 card.addEventListener("mouseleave", () => {
     card.style.transform = "scale(1)";
-    card.style.boxShadow = "none";
+    card.style.boxShadow = "0 2px 10px rgba(0,0,0,0.1)";
+});
+
+// ===== Focus/Blur =====
+const input = document.querySelector("input");
+
+input.addEventListener("focus", () => {
+    input.style.borderColor = "#3498db";
+});
+
+input.addEventListener("blur", () => {
+    input.style.borderColor = "#ddd";
 });`,
+    vsCodeSteps: [
+      "HTML da tugma, input va forma yarating",
+      "addEventListener('click', ...) qo'shing",
+      "Console (F12) da event.target ko'ring",
+      "Forma uchun e.preventDefault() ishlating",
+      "Event delegation bilan ko'p elementni boshqaring",
+      "Keyboard events (keydown) sinang"
+    ],
     assignment: {
       title: "Interaktiv Todo ilova",
-      description: "Oldingi darsdan davom etib, to'liq interaktiv todo yarating: 1) Forma submit da yangi vazifa qo'shish, 2) 'Bajarildi' tugmasi - completed class toggle, 3) 'O'chirish' tugmasi - elementni remove, 4) Enter tugmasi bilan ham vazifa qo'shish, 5) Bo'sh input yubormaslik validatsiyasi. Event delegation ishlatilsin.",
-      hint: "form.addEventListener('submit', e => { e.preventDefault(); ... }). Event delegation: ul.addEventListener('click', e => { if(e.target.matches('.delete')) ... }). classList.toggle('completed')."
+      description: "Oldingi darsni davom ettirib: 1) Forma submit bilan vazifa qo'shish (e.preventDefault()!), 2) 'Bajarildi' tugmasi - classList.toggle('completed'), 3) 'O'chirish' tugmasi - element.remove(), 4) Enter tugmasi bilan ham qo'shish (keydown), 5) Bo'sh input yubormaslik (validatsiya). Event delegation ishlatilsin!",
+      hint: "form.addEventListener('submit', e => { e.preventDefault(); ... }). Event delegation: ul.addEventListener da e.target.matches('.delete-btn') tekshiring.",
+      solution: `// Interaktiv Todo - script.js
+
+const todoInput = document.getElementById("todoInput");
+const todoForm = document.getElementById("todoForm");
+const todoList = document.getElementById("todoList");
+const errorMsg = document.getElementById("errorMsg");
+
+// Xatolik xabarini ko'rsatish/yashirish
+const showError = (message) => {
+    errorMsg.textContent = message;
+    errorMsg.style.display = "block";
+    todoInput.style.borderColor = "#e74c3c";
+};
+
+const hideError = () => {
+    errorMsg.style.display = "none";
+    todoInput.style.borderColor = "#ddd";
+};
+
+// Todo qo'shish
+const addTodo = (text) => {
+    const li = document.createElement("li");
+    li.className = "todo-item";
+    li.innerHTML = \`
+        <span class="todo-text">\${text}</span>
+        <div class="todo-actions">
+            <button class="complete-btn">✓</button>
+            <button class="delete-btn">✕</button>
+        </div>
+    \`;
+    
+    todoList.appendChild(li);
+    
+    // Animatsiya
+    li.style.animation = "slideIn 0.3s ease";
+};
+
+// Forma submit
+todoForm.addEventListener("submit", (e) => {
+    e.preventDefault(); // Sahifa yangilanishini TO'XTATISH!
+    
+    const text = todoInput.value.trim();
+    
+    // Validatsiya
+    if (text === "") {
+        showError("Iltimos, vazifa kiriting!");
+        todoInput.focus();
+        return;
+    }
+    
+    if (text.length < 2) {
+        showError("Vazifa kamida 2 ta belgi bo'lishi kerak!");
+        return;
+    }
+    
+    hideError();
+    addTodo(text);
+    todoInput.value = "";
+    todoInput.focus();
+});
+
+// Input o'zgarganda xatolikni yashirish
+todoInput.addEventListener("input", () => {
+    if (todoInput.value.trim() !== "") {
+        hideError();
+    }
+});
+
+// Event Delegation - delete va complete
+todoList.addEventListener("click", (e) => {
+    const target = e.target;
+    const li = target.closest(".todo-item");
+    
+    if (!li) return;
+    
+    // Delete
+    if (target.classList.contains("delete-btn")) {
+        li.style.animation = "fadeOut 0.3s ease";
+        setTimeout(() => li.remove(), 300);
+    }
+    
+    // Complete toggle
+    if (target.classList.contains("complete-btn") || 
+        target.classList.contains("todo-text")) {
+        li.classList.toggle("completed");
+    }
+});
+
+// Keyboard: Escape - inputni tozalash
+document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+        todoInput.value = "";
+        hideError();
+        todoInput.blur();
+    }
+});
+
+// Dastlabki todo'lar
+const initialTodos = [
+    "HTML o'rganish",
+    "CSS o'rganish", 
+    "JavaScript o'rganish"
+];
+
+initialTodos.forEach(text => addTodo(text));`
     }
   },
   {
@@ -2074,127 +3686,126 @@ card.addEventListener("mouseleave", () => {
     title: "CSS animatsiyalar va transitions",
     description: "Transition, keyframe animatsiyalar va transform",
     duration: "40 daqiqa",
-    content: `## CSS Transitions
+    content: `## Transition nima?
 
-Transition - bir holatdan boshqasiga silliq o'tish. Oddiy hover effektlari uchun ideal.
+Transition - bir holatdan boshqasiga SILLIQ o'tish. Masalan hover da rang o'zgarishi.
 
-### Transition xususiyatlari:
+## Transition sintaksisi
 
-transition-property: - qaysi xususiyat
-transition-duration: - davomiyligi
-transition-timing-function: - tezlik egri chizig'i
-transition-delay: - kechikish
+transition: property duration timing-function;
 
-### Qisqa yozuv:
-transition: property duration timing-function delay;
-transition: all 0.3s ease;
-transition: transform 0.3s, opacity 0.5s;
+Misol:
+.button {
+    background: blue;
+    transition: background 0.3s ease;
+}
 
-### Timing functions:
-- ease - sekin boshlaydi va tugaydi
+.button:hover {
+    background: red;
+}
+
+## Timing functions
+
+- ease - sekin boshlaydi va tugaydi (default)
 - linear - teng tezlik
 - ease-in - sekin boshlaydi
 - ease-out - sekin tugaydi
 - ease-in-out - ikkalasi
-- cubic-bezier(n,n,n,n) - custom
 
-## CSS Transform
+## Transform
 
-Elementni aylanntirish, kattalashtirish, surish.
+Elementni aylantirish, kattalashtirish, surish:
 
-### 2D Transform:
 - translate(x, y) - surish
-- rotate(deg) - aylantirish
-- scale(x, y) - kattalashtirish
-- skew(x, y) - qiyshiq qilish
+- scale(1.2) - kattalashtirish
+- rotate(45deg) - aylantirish
+- skew(10deg) - qiyshiq qilish
 
-### 3D Transform:
-- translateZ, rotateX, rotateY
-- perspective - chuqurlik effekti
-
-### transform-origin
-Aylanish nuqtasi (default: center)
-
-## CSS Keyframe Animations
-
-Murakkab, ko'p bosqichli animatsiyalar uchun.
-
-### @keyframes
-@keyframes animationName {
-    from { } / 0% { }
-    50% { }
-    to { } / 100% { }
+Misol:
+.card:hover {
+    transform: translateY(-10px) scale(1.05);
 }
 
-### animation xususiyatlari:
-- animation-name
-- animation-duration
-- animation-timing-function
-- animation-delay
-- animation-iteration-count (infinite)
-- animation-direction (alternate, reverse)
-- animation-fill-mode (forwards, backwards, both)
-- animation-play-state (running, paused)
+## @keyframes animatsiya
 
-### Qisqa yozuv:
-animation: name duration timing-function delay iteration-count direction fill-mode;
+Murakkab, ko'p bosqichli animatsiyalar:
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.element {
+    animation: fadeIn 0.5s ease forwards;
+}
+
+## Animation xususiyatlari
+
+animation-name: fadeIn;
+animation-duration: 0.5s;
+animation-timing-function: ease;
+animation-delay: 0.2s;
+animation-iteration-count: infinite; // cheksiz
+animation-direction: alternate; // oldinga-orqaga
+
+Qisqa:
+animation: fadeIn 0.5s ease 0.2s infinite alternate;
 
 ## Performance
 
-- transform va opacity GPU da ishlaydi (tez)
-- width, height, margin sekin
-- will-change: transform; - oldindan xabar berish`,
+Tez ishlaydigan xususiyatlar:
+- transform
+- opacity
+
+Sekin (ishlatmang):
+- width, height
+- margin, padding
+- left, top`,
     codeExample: `/* ===== Transitions ===== */
 
-.button {
-    background-color: #3498db;
-    color: white;
+.btn {
     padding: 12px 24px;
+    background: #3498db;
+    color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     
-    /* Transition */
+    /* Transition - barcha xususiyatlar uchun */
     transition: all 0.3s ease;
 }
 
-.button:hover {
-    background-color: #2980b9;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+.btn:hover {
+    background: #2980b9;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
-.button:active {
-    transform: translateY(0);
+.btn:active {
+    transform: translateY(-1px);
 }
 
-/* ===== Transform ===== */
-
+/* ===== Card hover ===== */
 .card {
-    transition: transform 0.3s ease;
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .card:hover {
-    transform: scale(1.05) rotate(2deg);
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
 }
 
-/* 3D flip */
-.flip-card {
-    perspective: 1000px;
-}
+/* ===== Keyframe Animatsiyalar ===== */
 
-.flip-card-inner {
-    transition: transform 0.6s;
-    transform-style: preserve-3d;
-}
-
-.flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-}
-
-/* ===== Keyframe Animations ===== */
-
-/* Fade in */
+/* Fade In */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -2207,7 +3818,7 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 }
 
 .fade-in {
-    animation: fadeIn 0.5s ease forwards;
+    animation: fadeIn 0.6s ease forwards;
 }
 
 /* Pulse */
@@ -2230,10 +3841,10 @@ animation: name duration timing-function delay iteration-count direction fill-mo
         transform: translateY(0);
     }
     40% {
-        transform: translateY(-30px);
+        transform: translateY(-20px);
     }
     60% {
-        transform: translateY(-15px);
+        transform: translateY(-10px);
     }
 }
 
@@ -2241,23 +3852,23 @@ animation: name duration timing-function delay iteration-count direction fill-mo
     animation: bounce 1s ease infinite;
 }
 
-/* Spin */
+/* Spinner */
 @keyframes spin {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
 }
 
 .spinner {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border: 4px solid #f3f3f3;
     border-top: 4px solid #3498db;
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
 
-/* Slide in from left */
-@keyframes slideIn {
+/* Slide In */
+@keyframes slideInLeft {
     from {
         opacity: 0;
         transform: translateX(-100px);
@@ -2269,7 +3880,7 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 }
 
 .slide-in {
-    animation: slideIn 0.5s ease-out forwards;
+    animation: slideInLeft 0.5s ease forwards;
 }
 
 /* Staggered animation */
@@ -2277,10 +3888,188 @@ animation: name duration timing-function delay iteration-count direction fill-mo
 .card:nth-child(2) { animation-delay: 0.2s; }
 .card:nth-child(3) { animation-delay: 0.3s; }
 .card:nth-child(4) { animation-delay: 0.4s; }`,
+    vsCodeSteps: [
+      "Tugma yarating va transition qo'shing",
+      ":hover da transform: scale(1.05) sinang",
+      "@keyframes fadeIn yarating",
+      "Elementga animation: fadeIn 0.5s; qo'shing",
+      "infinite va alternate sinang",
+      "animation-delay bilan staggered effekt yarating"
+    ],
     assignment: {
       title: "Animatsiyali landing page",
-      description: "Animatsiyali sahifa yarating: 1) Hero matn fadeIn bilan paydo bo'lsin, 2) Tugmalarda hover transition (scale, shadow), 3) 4 ta kartochka staggered animation bilan (ketma-ket), 4) Loading spinner (spin animatsiya), 5) Scroll da ko'rinadigan elementlar uchun slideIn. Kamida 3 ta @keyframes va 5 ta transition.",
-      hint: "Staggered: nth-child(n) bilan animation-delay. Spinner: border-radius: 50% va border-top boshqa rang. animation: fadeIn 0.5s ease forwards; - forwards oxirgi holatni saqlaydi."
+      description: "Animatsiyali sahifa yarating: 1) Hero h1 - fadeIn animatsiya, 2) Tugmalar - hover transition (scale, shadow), 3) 4 ta kartochka - staggered animation (ketma-ket paydo bo'lish), 4) Loading spinner (spin keyframe), 5) Scroll'da ko'rinadigan elementlar - slideIn. Kamida 3 ta @keyframes va 5 ta transition.",
+      hint: "fadeIn: opacity 0→1, translateY 20→0. Staggered: nth-child(n) bilan animation-delay. animation: ... forwards; - oxirgi holatda qoladi.",
+      solution: `/* Animatsiyali Landing Page CSS */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    line-height: 1.6;
+    background: #f5f5f5;
+}
+
+/* ===== Keyframes ===== */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ===== Hero Section ===== */
+.hero {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 40px;
+}
+
+.hero h1 {
+    font-size: clamp(36px, 8vw, 64px);
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease forwards;
+}
+
+.hero p {
+    font-size: clamp(18px, 3vw, 24px);
+    margin-bottom: 30px;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.2s forwards;
+}
+
+/* ===== Buttons ===== */
+.btn {
+    padding: 15px 35px;
+    font-size: 18px;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease 0.4s forwards;
+}
+
+.btn-primary {
+    background: white;
+    color: #667eea;
+}
+
+.btn-primary:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.btn-primary:active {
+    transform: translateY(-2px) scale(1.02);
+}
+
+/* ===== Cards Section ===== */
+.features {
+    padding: 80px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+}
+
+.feature-card {
+    flex: 0 1 280px;
+    background: white;
+    padding: 35px;
+    border-radius: 16px;
+    text-align: center;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+    transition: all 0.4s ease;
+    
+    /* Staggered animation */
+    opacity: 0;
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.feature-card:nth-child(1) { animation-delay: 0.1s; }
+.feature-card:nth-child(2) { animation-delay: 0.2s; }
+.feature-card:nth-child(3) { animation-delay: 0.3s; }
+.feature-card:nth-child(4) { animation-delay: 0.4s; }
+
+.feature-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+}
+
+.feature-card .icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    animation: float 3s ease-in-out infinite;
+}
+
+/* ===== Spinner ===== */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 4px solid #e0e0e0;
+    border-top: 4px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 50px auto;
+}
+
+/* ===== Pulse Effect ===== */
+.cta-btn {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* ===== Slide In (for scroll reveal) ===== */
+.slide-in-left {
+    opacity: 0;
+    animation: fadeInLeft 0.6s ease forwards;
+}
+
+.slide-in-left.visible {
+    animation-play-state: running;
+}`
     }
   },
   {
@@ -2290,48 +4079,35 @@ animation: name duration timing-function delay iteration-count direction fill-mo
     duration: "50 daqiqa",
     content: `## React nima?
 
-React - Facebook tomonidan yaratilgan JavaScript kutubxonasi. U foydalanuvchi interfeyslarini (UI) komponentlar asosida yaratish uchun ishlatiladi.
+React - Facebook yaratgan JavaScript kutubxonasi. U sahifani KOMPONENTLAR dan quradi.
 
-### React afzalliklari:
-- Komponentlar asosida (qayta ishlatish)
-- Virtual DOM (tez)
-- Bir yo'nalishli ma'lumot oqimi
-- Katta jamiyat va ekotizim
+Komponent = kichik, qayta ishlatiladigan UI qismi.
 
-## Komponent nima?
+## Nima uchun React?
 
-Komponent - mustaqil, qayta ishlatiladigan UI qismi. Har bir komponent o'z HTML, CSS va JavaScript ini o'z ichiga oladi.
+- Komponentlar - qayta ishlating
+- Virtual DOM - tez ishlaydi
+- Katta jamoa va ekotizim
+- Ishga olinish oson
 
-### Funksional komponent:
+## Birinchi komponent
+
 function Welcome() {
     return <h1>Salom!</h1>;
 }
 
-### Arrow function:
-const Welcome = () => {
-    return <h1>Salom!</h1>;
-};
+Bu JSX - JavaScript ichida HTML yozish.
 
-## JSX
+## JSX qoidalari
 
-JSX - JavaScript ichida HTML yozish imkoniyati. Bu React ning maxsus sintaksisi.
-
-Oddiy HTML:
-<div class="container">
-
-JSX:
-<div className="container">
-
-### JSX qoidalari:
-- class → className
-- for → htmlFor
-- camelCase atributlar (onClick, onChange)
-- Bitta ildiz element
-- {} ichida JavaScript
+1. className (class emas)
+2. camelCase (onClick, onChange)
+3. Bitta ildiz element
+4. {} ichida JavaScript
 
 ## Props
 
-Props - komponentga tashqaridan ma'lumot uzatish. Read-only (faqat o'qish).
+Props = tashqaridan keling ma'lumot
 
 function Card({ title, description }) {
     return (
@@ -2343,44 +4119,48 @@ function Card({ title, description }) {
 }
 
 // Ishlatish
-<Card title="React" description="JavaScript kutubxonasi" />
+<Card title="React" description="UI kutubxonasi" />
 
-### Props children:
-Komponent ichidagi kontent:
-<Card>
-    <p>Ichki kontent</p>
-</Card>
+## useState
 
-function Card({ children }) {
-    return <div className="card">{children}</div>;
+useState = komponent ichidagi holat (o'zgaruvchan ma'lumot)
+
+import { useState } from 'react';
+
+function Counter() {
+    const [count, setCount] = useState(0);
+    
+    return (
+        <button onClick={() => setCount(count + 1)}>
+            Bosildi: {count}
+        </button>
+    );
 }
 
-## useState Hook
+## Hodisalar
 
-useState - komponent holatini boshqarish uchun hook. Holat o'zgarganda komponent qayta renderlanadi.
-
-const [state, setState] = useState(initialValue);
-
-- state - joriy qiymat
-- setState - qiymatni o'zgartiruvchi funksiya
-- initialValue - boshlang'ich qiymat
-
-### Qoidalar:
-- Faqat komponent ichida
-- Shartlar/sikllar ichida EMAS
-- use bilan boshlanadi
-
-## Hodisalar React da
-
-React da hodisalar camelCase:
+React da camelCase:
 - onClick
 - onChange
 - onSubmit
-- onMouseEnter
 
-<button onClick={() => setCount(count + 1)}>
+<button onClick={() => console.log("Bosildi!")}>
     Bosing
-</button>`,
+</button>
+
+## Massivni render qilish
+
+const mevalar = ["olma", "banan", "uzum"];
+
+return (
+    <ul>
+        {mevalar.map((meva, index) => (
+            <li key={index}>{meva}</li>
+        ))}
+    </ul>
+);
+
+key - har bir element uchun noyob ID.`,
     codeExample: `import { useState } from 'react';
 
 // ===== Oddiy komponent =====
@@ -2412,7 +4192,7 @@ function Counter() {
     const [count, setCount] = useState(0);
     
     return (
-        <div>
+        <div className="counter">
             <h2>Son: {count}</h2>
             <button onClick={() => setCount(count + 1)}>+1</button>
             <button onClick={() => setCount(count - 1)}>-1</button>
@@ -2429,9 +4209,11 @@ function ToggleButton() {
         <button 
             onClick={() => setIsOn(!isOn)}
             style={{ 
-                backgroundColor: isOn ? 'green' : 'gray',
+                backgroundColor: isOn ? '#27ae60' : '#95a5a6',
                 color: 'white',
-                padding: '10px 20px'
+                padding: '10px 20px',
+                border: 'none',
+                borderRadius: '20px'
             }}
         >
             {isOn ? 'ON' : 'OFF'}
@@ -2534,12 +4316,7 @@ function App() {
                     <Card 
                         title="React"
                         description="UI kutubxonasi"
-                        imageUrl="/react.png"
-                    />
-                    <Card 
-                        title="Vue"
-                        description="Progressive framework"
-                        imageUrl="/vue.png"
+                        imageUrl="https://picsum.photos/300/200"
                     />
                 </div>
             </main>
@@ -2548,10 +4325,149 @@ function App() {
 }
 
 export default App;`,
+    vsCodeSteps: [
+      "Loyiha allaqachon React - App.tsx ni oching",
+      "Yangi komponent yarating: function MyComponent()",
+      "return ichida JSX yozing",
+      "className (class emas) ishlating",
+      "useState import qiling: import { useState } from 'react'",
+      "const [count, setCount] = useState(0);",
+      "onClick={() => setCount(count + 1)}"
+    ],
     assignment: {
-      title: "React mini loyiha",
-      description: "To'liq React ilovasi yarating: 1) Header komponenti (logo va nav), 2) ProductCard komponenti (props: rasm, nom, narx, description), 3) useState bilan savat (cart) - mahsulot qo'shish/o'chirish, 4) Jami narxni hisoblash va ko'rsatish, 5) 'Savat bo'sh' xabari agar bo'sh bo'lsa. Kamida 3 ta komponent va 2 ta useState.",
-      hint: "Cart uchun: const [cart, setCart] = useState([]). Qo'shish: setCart([...cart, product]). O'chirish: setCart(cart.filter(p => p.id !== id)). Jami: cart.reduce((sum, p) => sum + p.price, 0)."
+      title: "React bilan Todo ilova",
+      description: "React da Todo ilova yarating: 1) TodoApp komponenti - useState bilan todos massiv, 2) Input va 'Qo'shish' tugmasi, 3) todos.map() bilan ro'yxat, 4) Har bir item da 'Bajarildi' (toggle) va 'O'chirish' tugmalari, 5) Bajarilmaganlar sonini ko'rsating. Alohida TodoItem komponenti yarating!",
+      hint: "useState([]) - bo'sh massiv. setTodos([...todos, yangiItem]). filter(t => t.id !== id) - o'chirish. map() bilan toggle.",
+      solution: `import { useState } from 'react';
+
+// TodoItem komponenti
+function TodoItem({ todo, onToggle, onDelete }) {
+    return (
+        <li className={\`todo-item \${todo.completed ? 'completed' : ''}\`}>
+            <span 
+                onClick={() => onToggle(todo.id)}
+                style={{
+                    textDecoration: todo.completed ? 'line-through' : 'none',
+                    cursor: 'pointer',
+                    flex: 1
+                }}
+            >
+                {todo.text}
+            </span>
+            <button 
+                onClick={() => onToggle(todo.id)}
+                className="complete-btn"
+            >
+                {todo.completed ? '↩️' : '✓'}
+            </button>
+            <button 
+                onClick={() => onDelete(todo.id)}
+                className="delete-btn"
+            >
+                ✕
+            </button>
+        </li>
+    );
+}
+
+// Asosiy TodoApp komponenti
+function TodoApp() {
+    const [todos, setTodos] = useState([
+        { id: 1, text: 'React o\\'rganish', completed: false },
+        { id: 2, text: 'Loyiha yaratish', completed: false },
+        { id: 3, text: 'Portfolio to\\'ldirish', completed: true }
+    ]);
+    const [input, setInput] = useState('');
+    
+    // Yangi todo qo'shish
+    const addTodo = () => {
+        const text = input.trim();
+        if (text === '') return;
+        
+        const newTodo = {
+            id: Date.now(),
+            text: text,
+            completed: false
+        };
+        
+        setTodos([...todos, newTodo]);
+        setInput('');
+    };
+    
+    // Toggle - bajarildi/bajarilmadi
+    const toggleTodo = (id) => {
+        setTodos(todos.map(todo => 
+            todo.id === id 
+                ? { ...todo, completed: !todo.completed }
+                : todo
+        ));
+    };
+    
+    // O'chirish
+    const deleteTodo = (id) => {
+        setTodos(todos.filter(todo => todo.id !== id));
+    };
+    
+    // Enter bilan qo'shish
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            addTodo();
+        }
+    };
+    
+    // Statistika
+    const totalTodos = todos.length;
+    const completedTodos = todos.filter(t => t.completed).length;
+    const remainingTodos = totalTodos - completedTodos;
+    
+    return (
+        <div className="todo-app">
+            <h1>📝 Vazifalar Ro'yxati</h1>
+            
+            {/* Qo'shish formasi */}
+            <div className="add-form">
+                <input 
+                    type="text"
+                    value={input}
+                    onChange={(e) => setInput(e.target.value)}
+                    onKeyPress={handleKeyPress}
+                    placeholder="Yangi vazifa..."
+                    className="todo-input"
+                />
+                <button onClick={addTodo} className="add-btn">
+                    Qo'shish
+                </button>
+            </div>
+            
+            {/* Vazifalar ro'yxati */}
+            {todos.length === 0 ? (
+                <p className="empty-message">Hozircha vazifalar yo'q</p>
+            ) : (
+                <ul className="todo-list">
+                    {todos.map(todo => (
+                        <TodoItem 
+                            key={todo.id}
+                            todo={todo}
+                            onToggle={toggleTodo}
+                            onDelete={deleteTodo}
+                        />
+                    ))}
+                </ul>
+            )}
+            
+            {/* Statistika */}
+            {todos.length > 0 && (
+                <div className="stats">
+                    <span>Jami: {totalTodos}</span>
+                    <span>Bajarilgan: {completedTodos}</span>
+                    <span>Qoldi: {remainingTodos}</span>
+                </div>
+            )}
+        </div>
+    );
+}
+
+export default TodoApp;`
     }
   }
 ];
