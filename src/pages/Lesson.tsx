@@ -52,7 +52,7 @@ const Lesson = () => {
   }
 
   const prevLesson = lessonId > 1 ? lessonId - 1 : null;
-  const nextLesson = lessonId < 15 ? lessonId + 1 : null;
+  const nextLesson = lessonId < lessons.length ? lessonId + 1 : null;
 
   return (
     <div className="flex min-h-screen bg-background">
@@ -70,8 +70,7 @@ const Lesson = () => {
                 <div>
                   <h1 className="font-display font-bold text-lg">{lesson.title}</h1>
                   <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                    <Clock className="w-4 h-4" />
-                    {lesson.duration}
+                    Dars {lesson.id} / {lessons.length}
                   </div>
                 </div>
               </div>
@@ -229,10 +228,10 @@ const Lesson = () => {
                 </Button>
               </Link>
             ) : (
-              <Link to="/">
+              <Link to="/quiz">
                 <Button variant="success" className="gap-2">
-                  Kursni tugatdingiz!
-                  <CheckCircle className="w-4 h-4" />
+                  Yakuniy testga o'tish
+                  <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
             )}
