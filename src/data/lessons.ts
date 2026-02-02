@@ -107,12 +107,12 @@ Xuddi kitob o'qigandek - birinchi sahifadan oxirigacha.`,
     <title>Mening sahifam</title>
 </head>
 <body>
-    <h1>Jasur Karimov</h1>
+    <h1>Xudarganov Farrux</h1>
     <p>Men <strong>Toshkent</strong>da yashayman. Yoshim 22 da. <em>Dasturlashni</em> juda yaxshi ko'raman!</p>
     
     <h2>Mening maqsadlarim</h2>
     <p>Men professional <strong>frontend dasturchi</strong> bo'lmoqchiman. 
-    2024 yil oxirigacha <em>React</em> va <em>TypeScript</em> ni mukammal o'rganmoqchiman.</p>
+    2026 yil oxirigacha <em>React</em> va <em>TypeScript</em> ni mukammal o'rganmoqchiman.</p>
 </body>
 </html>`
     }
@@ -223,9 +223,9 @@ target="_blank" - yangi tabda ochadi
     <title>Jasur - Portfolio</title>
 </head>
 <body>
-    <h1 id="name">Jasur Karimov</h1>
+    <h1 id="name">Xudarganov Farrux</h1>
     
-    <img src="https://picsum.photos/200" alt="Jasur Karimov rasmi">
+    <img src="https://picsum.photos/200" alt="Xudarganov Farrux rasmi">
     
     <h2>Men haqimda</h2>
     <p class="about">Men frontend dasturchiman. 3 yillik tajribam bor.</p>
@@ -233,20 +233,20 @@ target="_blank" - yangi tabda ochadi
     
     <h2>Ijtimoiy tarmoqlar</h2>
     <p>
-        <a href="https://github.com/jasur" target="_blank">GitHub</a> | 
-        <a href="https://linkedin.com/in/jasur" target="_blank">LinkedIn</a> | 
-        <a href="https://t.me/jasur" target="_blank">Telegram</a>
+        <a href="https://github.com/farrux" target="_blank">GitHub</a> | 
+        <a href="https://linkedin.com/in/farrux" target="_blank">LinkedIn</a> | 
+        <a href="https://t.me/farrux" target="_blank">Telegram</a>
     </p>
     
     <h2>Bog'lanish</h2>
     <p>
         <a href="tel:+998901234567">📞 +998 90 123 45 67</a><br>
-        <a href="mailto:jasur@example.com">📧 jasur@example.com</a>
+        <a href="mailto:farrux@example.com">📧 farrux@example.com</a>
     </p>
     
     <hr>
     <footer>
-        <p>&copy; 2024 Jasur Karimov. Barcha huquqlar himoyalangan.</p>
+        <p>&copy; 2026 Xudarganov Farrux. Barcha huquqlar himoyalangan.</p>
     </footer>
 </body>
 </html>`
@@ -362,10 +362,10 @@ Struktura:
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <title>Jasur Karimov - CV</title>
+    <title>Xudarganov Farrux - CV</title>
 </head>
 <body>
-    <h1>Jasur Karimov</h1>
+    <h1>Xudarganov Farrux</h1>
     <p>Frontend Developer | Toshkent</p>
     
     <h2>Texnik ko'nikmalar</h2>

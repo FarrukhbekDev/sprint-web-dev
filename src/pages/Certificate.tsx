@@ -169,7 +169,7 @@ const Certificate = () => {
                 
                 <div className="text-center">
                   <div className="w-32 sm:w-40 border-b-2 border-gray-300 mb-2 h-8 flex items-end justify-center">
-                    <span className="font-display text-lg text-amber-600 italic">front-end.uz</span>
+                    <span className="text-2xl text-amber-600" style={{ fontFamily: "'Brush Script MT', 'Segoe Script', cursive", fontStyle: "italic", letterSpacing: "2px" }}>Xuf</span>
                   </div>
                   <p className="text-xs uppercase tracking-wider">Imzo</p>
                 </div>

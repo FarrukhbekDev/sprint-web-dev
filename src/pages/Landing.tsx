@@ -7,7 +7,7 @@ const Landing = () => {
   const features = [
     {
       icon: BookOpen,
-      title: "15 ta oson dars",
+      title: "20 ta oson dars",
       description: "Bosqichma-bosqich, sodda tilda yozilgan darslar"
     },
     {
@@ -28,9 +28,9 @@ const Landing = () => {
   ];
 
   const stats = [
-    { value: "15", label: "Darslar" },
-    { value: "45+", label: "Misollar" },
-    { value: "15", label: "Topshiriqlar" },
+    { value: "20", label: "Darslar" },
+    { value: "60+", label: "Misollar" },
+    { value: "20", label: "Topshiriqlar" },
     { value: "100%", label: "Bepul" }
   ];
 
@@ -59,7 +59,7 @@ const Landing = () => {
         <div className="container mx-auto text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 text-primary font-medium text-sm mb-6 animate-fade-in">
             <Zap className="w-4 h-4" />
-            15 darsda front-end asoslarini o'rganing
+            20 darsda front-end asoslarini o'rganing
           </div>
           
           <h1 className="font-display text-4xl md:text-6xl lg:text-7xl font-bold mb-6 animate-fade-in">
@@ -142,7 +142,7 @@ const Landing = () => {
               Kurs dasturi
             </h2>
             <p className="text-muted-foreground max-w-xl mx-auto">
-              15 ta dars orqali front-end dasturlash asoslarini o'rganing
+              20 ta dars orqali front-end dasturlash asoslarini o'rganing
             </p>
           </div>
           
@@ -181,7 +181,7 @@ const Landing = () => {
             </h2>
             <p className="text-primary-foreground/80 max-w-xl mx-auto mb-8">
               Front-end dasturlashni o'rganish hech qachon bu qadar oson bo'lmagan. 
-              15 darsda professional web sahifalar yaratishni o'rganing.
+              20 darsda professional web sahifalar yaratishni o'rganing.
             </p>
             <Link to="/lessons/1">
               <Button variant="accent" size="xl">
@@ -203,7 +203,7 @@ const Landing = () => {
             <span className="font-display font-semibold">front-end.uz</span>
           </div>
           <p className="text-sm text-muted-foreground">
-            © 2024 front-end.uz — O'zbek tilida bepul front-end kursi
+            © 2026 front-end.uz — O'zbek tilida bepul front-end kursi
           </p>
         </div>
       </footer>
