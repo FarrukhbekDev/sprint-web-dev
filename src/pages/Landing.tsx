@@ -2,57 +2,71 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, BookOpen, Code, Layers, Zap, CheckCircle, Users, Sparkles, Trophy, Star, Play, GraduationCap } from "lucide-react";
 import { lessons } from "@/data/lessons";
-
 const Landing = () => {
-  const features = [
-    {
-      icon: BookOpen,
-      title: "20 ta oson dars",
-      description: "Bosqichma-bosqich, sodda tilda yozilgan darslar",
-      color: "from-primary to-primary/70"
-    },
-    {
-      icon: Code,
-      title: "Amaliy misollar",
-      description: "Har bir darsda tayyor kod namunalari",
-      color: "from-accent to-accent/70"
-    },
-    {
-      icon: Layers,
-      title: "Topshiriqlar",
-      description: "Har dars oxirida mustahkamlovchi topshiriqlar",
-      color: "from-success to-success/70"
-    },
-    {
-      icon: Zap,
-      title: "Tezkor o'rganish",
-      description: "Oson va tushunarli formatda tayyorlangan",
-      color: "from-primary to-accent"
-    }
-  ];
-
-  const stats = [
-    { value: "20", label: "Darslar", icon: BookOpen },
-    { value: "60+", label: "Misollar", icon: Code },
-    { value: "30", label: "Test savollari", icon: CheckCircle },
-    { value: "100%", label: "Bepul", icon: Star }
-  ];
-
-  const technologies = [
-    { name: "HTML5", color: "bg-orange-500" },
-    { name: "CSS3", color: "bg-blue-500" },
-    { name: "JavaScript", color: "bg-yellow-500" },
-    { name: "React", color: "bg-cyan-500" },
-    { name: "Git", color: "bg-red-500" }
-  ];
-
-  return (
-    <div className="min-h-screen bg-background overflow-hidden">
+  const features = [{
+    icon: BookOpen,
+    title: "20 ta oson dars",
+    description: "Bosqichma-bosqich, sodda tilda yozilgan darslar",
+    color: "from-primary to-primary/70"
+  }, {
+    icon: Code,
+    title: "Amaliy misollar",
+    description: "Har bir darsda tayyor kod namunalari",
+    color: "from-accent to-accent/70"
+  }, {
+    icon: Layers,
+    title: "Topshiriqlar",
+    description: "Har dars oxirida mustahkamlovchi topshiriqlar",
+    color: "from-success to-success/70"
+  }, {
+    icon: Zap,
+    title: "Tezkor o'rganish",
+    description: "Oson va tushunarli formatda tayyorlangan",
+    color: "from-primary to-accent"
+  }];
+  const stats = [{
+    value: "20",
+    label: "Darslar",
+    icon: BookOpen
+  }, {
+    value: "60+",
+    label: "Misollar",
+    icon: Code
+  }, {
+    value: "30",
+    label: "Test savollari",
+    icon: CheckCircle
+  }, {
+    value: "100%",
+    label: "Bepul",
+    icon: Star
+  }];
+  const technologies = [{
+    name: "HTML5",
+    color: "bg-orange-500"
+  }, {
+    name: "CSS3",
+    color: "bg-blue-500"
+  }, {
+    name: "JavaScript",
+    color: "bg-yellow-500"
+  }, {
+    name: "React",
+    color: "bg-cyan-500"
+  }, {
+    name: "Git",
+    color: "bg-red-500"
+  }];
+  return <div className="min-h-screen bg-background overflow-hidden">
       {/* Animated Background Blobs */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute top-0 -left-40 w-80 h-80 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob" />
-        <div className="absolute top-0 -right-40 w-80 h-80 bg-accent/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000" style={{ animationDelay: "2s" }} />
-        <div className="absolute -bottom-40 left-1/2 w-80 h-80 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000" style={{ animationDelay: "4s" }} />
+        <div className="absolute top-0 -right-40 w-80 h-80 bg-accent/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-2000" style={{
+        animationDelay: "2s"
+      }} />
+        <div className="absolute -bottom-40 left-1/2 w-80 h-80 bg-primary/20 rounded-full mix-blend-multiply filter blur-3xl opacity-70 animate-blob animation-delay-4000" style={{
+        animationDelay: "4s"
+      }} />
       </div>
 
       {/* Header */}
@@ -103,7 +117,7 @@ const Landing = () => {
             <span className="relative">
               <span className="text-gradient">oson</span>
               <svg className="absolute -bottom-2 left-0 w-full" viewBox="0 0 200 12" fill="none">
-                <path d="M2 10C50 4 150 4 198 10" stroke="hsl(var(--primary))" strokeWidth="3" strokeLinecap="round"/>
+                <path d="M2 10C50 4 150 4 198 10" stroke="hsl(var(--primary))" strokeWidth="3" strokeLinecap="round" />
               </svg>
             </span>
             {" "}o'rganing
@@ -134,16 +148,12 @@ const Landing = () => {
           {/* Technologies */}
           <div className="flex flex-wrap items-center justify-center gap-3 animate-fade-in">
             <span className="text-sm text-muted-foreground mr-2">O'rganasiz:</span>
-            {technologies.map((tech, index) => (
-              <div 
-                key={tech.name}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border shadow-sm hover:shadow-md transition-all hover:scale-105"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
+            {technologies.map((tech, index) => <div key={tech.name} className="flex items-center gap-2 px-4 py-2 rounded-full bg-card border border-border shadow-sm hover:shadow-md transition-all hover:scale-105" style={{
+            animationDelay: `${index * 100}ms`
+          }}>
                 <div className={`w-2 h-2 rounded-full ${tech.color}`} />
                 <span className="text-sm font-medium">{tech.name}</span>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -153,12 +163,9 @@ const Landing = () => {
         <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-accent/5 to-primary/5" />
         <div className="container mx-auto px-4 relative">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {stats.map((stat, index) => (
-              <div 
-                key={index} 
-                className="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300 group"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
+            {stats.map((stat, index) => <div key={index} className="glass-card rounded-2xl p-6 text-center hover:scale-105 transition-all duration-300 group" style={{
+            animationDelay: `${index * 100}ms`
+          }}>
                 <div className="w-12 h-12 rounded-xl hero-gradient mx-auto mb-4 flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
                   <stat.icon className="w-6 h-6 text-primary-foreground" />
                 </div>
@@ -166,8 +173,7 @@ const Landing = () => {
                   {stat.value}
                 </div>
                 <div className="text-muted-foreground font-medium">{stat.label}</div>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -189,12 +195,9 @@ const Landing = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {features.map((feature, index) => (
-              <div 
-                key={index} 
-                className="group relative bg-card rounded-2xl p-8 border border-border hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:-translate-y-2"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
+            {features.map((feature, index) => <div key={index} className="group relative bg-card rounded-2xl p-8 border border-border hover:border-primary/50 transition-all duration-500 hover:shadow-xl hover:-translate-y-2" style={{
+            animationDelay: `${index * 100}ms`
+          }}>
                 {/* Gradient overlay on hover */}
                 <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-primary/5 to-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 
@@ -203,8 +206,7 @@ const Landing = () => {
                 </div>
                 <h3 className="relative font-display font-bold text-xl mb-3">{feature.title}</h3>
                 <p className="relative text-muted-foreground">{feature.description}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
         </div>
       </section>
@@ -227,12 +229,7 @@ const Landing = () => {
           </div>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-            {lessons.map((lesson, index) => (
-              <Link 
-                key={lesson.id} 
-                to={`/lessons/${lesson.id}`}
-                className="group relative bg-card rounded-xl p-5 border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
-              >
+            {lessons.map((lesson, index) => <Link key={lesson.id} to={`/lessons/${lesson.id}`} className="group relative bg-card rounded-xl p-5 border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                 <div className="flex items-start gap-4">
                   <div className="w-12 h-12 rounded-xl hero-gradient flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition-transform shadow-md">
                     <span className="font-display font-bold text-primary-foreground text-lg">{lesson.id}</span>
@@ -250,8 +247,7 @@ const Landing = () => {
                 
                 {/* Hover arrow */}
                 <ArrowRight className="absolute bottom-5 right-5 w-5 h-5 text-primary opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
-              </Link>
-            ))}
+              </Link>)}
           </div>
         </div>
       </section>
@@ -342,13 +338,11 @@ const Landing = () => {
             </div>
             
             <p className="text-sm text-muted-foreground">
-              © 2026 <span className="font-medium">Xudarganov Farrux</span>. Barcha huquqlar himoyalangan.
+              © 2026 <span className="font-medium"></span>. Barcha huquqlar himoyalangan.
             </p>
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Landing;
