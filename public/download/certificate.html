@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sertifikat - front-end.uz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Name Input Screen -->
+    <div class="cert-input-screen" id="certInput">
+        <div class="cert-input-inner">
+            <div class="cert-award-icon">🏆</div>
+            <h1 class="cert-input-title">Tabriklaymiz! 🎉</h1>
+            <p class="cert-input-desc">Siz "Frontend Sprint" kursini muvaffaqiyatli yakunladingiz! Sertifikatingizni olish uchun ismingizni kiriting.</p>
+            <div class="cert-input-form">
+                <input type="text" id="certName" class="cert-name-input" placeholder="To'liq ismingizni kiriting">
+                <button class="btn btn-hero btn-xl cert-gen-btn" onclick="generateCertificate()" id="certGenBtn" disabled>
+                    🏅 Sertifikat olish
+                </button>
+                <a href="index.html" class="btn btn-outline btn-xl" style="width:100%;">Bosh sahifaga</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Certificate View -->
+    <div class="cert-view" id="certView" style="display:none;">
+        <div class="cert-actions print-hidden">
+            <a href="index.html" class="btn btn-ghost">🏠 Bosh sahifa</a>
+            <button class="btn btn-hero" onclick="window.print()">🖨️ Chop etish / PDF saqlash</button>
+        </div>
+
+        <div class="cert-paper">
+            <div class="cert-border"></div>
+            <div class="cert-corner cert-tl"></div>
+            <div class="cert-corner cert-tr"></div>
+            <div class="cert-corner cert-bl"></div>
+            <div class="cert-corner cert-br"></div>
+
+            <div class="cert-body">
+                <div class="cert-logo-badge">🏆</div>
+                <p class="cert-org">front-end.uz</p>
+                <h1 class="cert-title">SERTIFIKAT</h1>
+                <p class="cert-subtitle">Ushbu sertifikat tasdiqlaydiki</p>
+                <div class="cert-name-display" id="certNameDisplay"></div>
+                <p class="cert-desc">"<strong>Frontend Sprint</strong>" kursini muvaffaqiyatli yakunladi</p>
+                <p class="cert-details">HTML, CSS, JavaScript va React texnologiyalari bo'yicha 20 ta darsni o'zlashtirdi va yakuniy testdan muvaffaqiyatli o'tdi</p>
+
+                <div class="cert-footer-info">
+                    <div class="cert-date-block">
+                        <div class="cert-line" id="certDate"></div>
+                        <p class="cert-label">Sana</p>
+                    </div>
+                    <div class="cert-sign-block">
+                        <div class="cert-line"><span class="cert-signature">Xuf</span></div>
+                        <p class="cert-label">Imzo</p>
+                    </div>
+                </div>
+                <p class="cert-id" id="certId"></p>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @media print {
+            body { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+            .print-hidden { display: none !important; }
+            .cert-paper { box-shadow: none !important; border-radius: 0 !important; }
+        }
+    </style>
+
+    <script src="script.js"></script>
+    <script>
+        initCertificatePage();
+    </script>
+</body>
+</html>

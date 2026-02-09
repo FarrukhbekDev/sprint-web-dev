@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dars - front-end.uz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="lesson-layout">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <a href="index.html" class="logo">
+                    <div class="logo-icon small">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6"></polyline>
+                            <polyline points="8 6 2 12 8 18"></polyline>
+                        </svg>
+                    </div>
+                    <div class="logo-text">
+                        <span class="logo-title" style="font-size:1rem;">front-end.uz</span>
+                    </div>
+                </a>
+                <button class="sidebar-close" id="sidebarClose" aria-label="Yopish">✕</button>
+            </div>
+            <nav class="sidebar-nav" id="sidebarNav">
+                <!-- Filled by JS -->
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="lesson-main">
+            <!-- Lesson Header -->
+            <header class="lesson-header">
+                <div class="lesson-header-inner">
+                    <div class="lesson-header-left">
+                        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Menyu">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="4" x2="20" y1="12" y2="12"></line>
+                                <line x1="4" x2="20" y1="6" y2="6"></line>
+                                <line x1="4" x2="20" y1="18" y2="18"></line>
+                            </svg>
+                        </button>
+                        <div class="lesson-header-num" id="lessonNum"></div>
+                        <div>
+                            <h1 class="lesson-header-title" id="lessonTitle"></h1>
+                            <div class="lesson-header-meta" id="lessonMeta"></div>
+                        </div>
+                    </div>
+                    <button class="btn btn-complete" id="completeBtn" onclick="markComplete()">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+                        </svg>
+                        <span class="btn-complete-text">Tugatilgan deb belgilash</span>
+                    </button>
+                </div>
+            </header>
+
+            <!-- Content -->
+            <div class="lesson-content-area" id="lessonContent">
+                <!-- Filled by JS -->
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        initLessonPage();
+    </script>
+</body>
+</html>
