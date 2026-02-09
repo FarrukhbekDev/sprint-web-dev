@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yakuniy test - front-end.uz</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-page" id="quizPage">
+        <!-- Quiz Header -->
+        <header class="quiz-header">
+            <div class="quiz-header-inner">
+                <div class="quiz-header-top">
+                    <h1 class="quiz-header-title">Yakuniy test</h1>
+                    <span class="quiz-counter" id="quizCounter">1 / 30</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill" style="width: 3.33%"></div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Question Area -->
+        <main class="quiz-main">
+            <div class="quiz-content" id="quizContent">
+                <div class="quiz-badge" id="quizBadge">Savol 1</div>
+                <h2 class="quiz-question" id="quizQuestion"></h2>
+
+                <div class="quiz-options" id="quizOptions">
+                    <!-- Filled by JS -->
+                </div>
+
+                <div class="quiz-explanation" id="quizExplanation" style="display:none;"></div>
+
+                <div class="quiz-actions">
+                    <button class="btn btn-hero btn-xl" id="quizSubmit" onclick="submitAnswer()" disabled>
+                        Javobni tekshirish
+                    </button>
+                    <button class="btn btn-hero btn-xl" id="quizNext" onclick="nextQuestion()" style="display:none;">
+                        Keyingi savol →
+                    </button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Result Screen -->
+    <div class="quiz-result" id="quizResult" style="display:none;">
+        <div class="quiz-result-inner">
+            <div class="quiz-result-icon" id="resultIcon"></div>
+            <h1 class="quiz-result-title" id="resultTitle"></h1>
+            <p class="quiz-result-score" id="resultScore"></p>
+            <div class="quiz-result-bar">
+                <div class="quiz-result-progress" id="resultProgress"></div>
+            </div>
+            <p class="quiz-result-message" id="resultMessage"></p>
+            <div class="quiz-result-actions">
+                <button class="btn btn-hero btn-xl" id="resultAction" onclick="handleResultAction()"></button>
+                <a href="index.html" class="btn btn-outline btn-xl">Bosh sahifaga</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        initQuizPage();
+    </script>
+</body>
+</html>
